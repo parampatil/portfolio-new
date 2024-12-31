@@ -38,3 +38,6 @@ This is a portfolio website that showcases my projects and skills. It is built u
 - npm shadcn@latest add hover-card
 - npx shadcn@latest add sheet
 - npx shadcn@latest add collapsible
+
+### Setting up Magic UI
+- npx shadcn@latest add "https://magicui.design/r/typing-animation"
