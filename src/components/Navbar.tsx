@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useAuthStore } from "@/state/authStore";
 import { signOut } from "firebase/auth";
 import { auth } from "@/features/auth/firebase";
@@ -15,7 +15,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 
 interface NavItem {
   name: string;
@@ -29,8 +29,6 @@ interface MobileSidebarProps {
   handleSignOut: () => void;
 }
 
-import { ChevronDown } from "lucide-react";
-
 const MobileSidebar = ({
   navItems,
   user,
@@ -41,19 +39,19 @@ const MobileSidebar = ({
       <SheetTrigger>
         <Menu size={24} />
       </SheetTrigger>
-      <SheetContent side="left" className="bg-blue-600 text-white">
+      <SheetContent side="left" className="bg-gradient-to-r from-black/95 to-gray-800/90 bg-transparent text-white">
         <div className="p-4">
           {navItems.map((item) => (
             <MobileNavItem key={item.name} item={item} />
           ))}
           {user && (
             <>
-              <Link
+              <NavLink
                 to="/admin"
                 className="block py-2 transition hover:text-gray-300"
               >
                 Admin
-              </Link>
+              </NavLink>
               <button
                 onClick={handleSignOut}
                 className="mt-4 rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition hover:bg-red-600"
@@ -74,9 +72,14 @@ const MobileNavItem = ({ item }: { item: NavItem }) => {
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <div className="flex items-center justify-between py-2">
-        <Link to={item.path} className="transition hover:text-gray-300">
+        <NavLink
+          to={item.path}
+          className={({ isActive }) =>
+            `transition ${isActive ? "text-yellow-300" : "hover:text-gray-300"}`
+          }
+        >
           {item.name}
-        </Link>
+        </NavLink>
         <CollapsibleTrigger>
           <ChevronDown
             size={16}
@@ -86,13 +89,13 @@ const MobileNavItem = ({ item }: { item: NavItem }) => {
       </div>
       <CollapsibleContent className="CollapsibleContent pl-4">
         {item.dropdown.map((subItem) => (
-          <Link
+          <NavLink
             key={subItem.name}
             to={subItem.path}
             className="block py-1 transition hover:text-gray-300"
           >
             {subItem.name}
-          </Link>
+          </NavLink>
         ))}
       </CollapsibleContent>
     </Collapsible>
@@ -115,9 +118,9 @@ const Navbar = () => {
       name: "Home",
       path: "/",
       dropdown: [
-        { name: "About", path: "/about" },
-        { name: "Projects", path: "/projects" },
-        { name: "Contact Me", path: "/contact" },
+        { name: "About", path: "/#about-me" },
+        { name: "Projects", path: "/#projects" },
+        { name: "Contact Me", path: "/#contact" },
       ],
     },
     {
@@ -177,67 +180,82 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed left-0 top-0 z-50 w-full bg-blue-600 bg-opacity-50 px-4 text-white shadow-md backdrop-blur-lg"
+      className="fixed left-0 top-0 z-50 w-full bg-gradient-to-b from-blue-600/50 to-blue-600/0 px-4 text-white shadow-md backdrop-blur-lg"
     >
-      <div className="container mx-auto flex items-center justify-between">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="cursor-pointer py-4 text-xl font-bold"
-          onClick={() => navigate("/")}
-        >
-          My Portfolio
-        </motion.div>
-        <div className="flex items-center space-x-6">
-          {isMobile ? (
-            <MobileSidebar
-              navItems={navItems}
-              user={!!user}
-              handleSignOut={handleSignOut}
-            />
-          ) : (
-            navItems.map((item) => (
-              <HoverCard key={item.name}>
-                <HoverCardTrigger>
-                  <Link
-                    to={item.path}
-                    className="transition hover:text-gray-300"
-                  >
-                    {item.name}
-                  </Link>
-                </HoverCardTrigger>
-                <HoverCardContent sideOffset={18}>
-                  <div className="p-2">
-                    {item.dropdown.map((subItem) => (
-                      <div key={subItem.name} className="py-1">
-                        <Link
-                          to={subItem.path}
-                          className="transition hover:text-gray-300"
-                        >
-                          {subItem.name}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-            ))
-          )}
-          {user && !isMobile && (
-            <>
-              <Link to="/admin" className="transition hover:text-gray-300">
-                Admin
-              </Link>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={handleSignOut}
-                className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition hover:bg-red-600"
+      <div className="container mx-auto flex items-stretch justify-between">
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        className="cursor-pointer py-4 text-xl font-bold"
+        onClick={() => navigate("/")}
+      >
+        Param Patil
+      </motion.div>
+      <div className="flex items-stretch">
+        {isMobile ? (
+        <MobileSidebar
+          navItems={navItems}
+          user={!!user}
+          handleSignOut={handleSignOut}
+        />
+        ) : (
+        navItems.map((item) => (
+          <HoverCard key={item.name} openDelay={0} closeDelay={100}>
+          <HoverCardTrigger className="flex cursor-pointer items-center px-3 hover:bg-white/10">
+            <NavLink
+            to={item.path}
+            className={({ isActive }) =>
+              `transition-colors duration-300 ${
+              isActive ? "text-yellow-300" : "hover:text-gray-300"
+              }`
+            }
+            >
+            {item.name}
+            </NavLink>
+          </HoverCardTrigger>
+          <HoverCardContent>
+            <div className="p-2">
+            {item.dropdown.map((subItem) => (
+              <div key={subItem.name} className="py-1">
+              <NavLink
+                to={subItem.path}
+                className="transition-colors duration-300 hover:text-gray-300"
               >
-                Sign Out
-              </motion.button>
-            </>
-          )}
-        </div>
+                {subItem.name}
+              </NavLink>
+              </div>
+            ))}
+            </div>
+          </HoverCardContent>
+          </HoverCard>
+        ))
+        )}
+        {user && !isMobile && (
+        <>
+          <div className="flex cursor-pointer items-center px-3 hover:bg-white/10">
+          <NavLink
+            to="/admin"
+            className={({ isActive }) =>
+            `px-3 transition-colors duration-300 ${
+              isActive ? "text-yellow-300" : "hover:text-gray-300"
+            }`
+            }
+          >
+            Admin
+          </NavLink>
+          </div>
+          <div className="flex cursor-pointer items-center px-3">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleSignOut}
+            className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-red-600"
+          >
+            Sign Out
+          </motion.button>
+          </div>
+        </>
+        )}
+      </div>
       </div>
     </motion.nav>
   );

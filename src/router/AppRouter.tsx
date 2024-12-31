@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToAnchor from "./ScrollToAnchor";
 import Navbar from "@/components/Navbar";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
@@ -11,6 +12,7 @@ import Footer from "@/components/Footer";
 
 const AppRouter = () => (
   <Router>
+    <ScrollToAnchor />
     <Navbar />
     <Routes>
       <Route path="/" element={<HomePage />} />
