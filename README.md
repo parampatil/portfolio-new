@@ -9,6 +9,9 @@ This is a portfolio website that showcases my projects and skills. It is built u
 4. Language: TypeScript, HTML, CSS
 
 ## Installations
+### Setting up GitHub Pages
+- npm install gh-pages --save-dev
+
 ### Setting up Tailwind CSS
 - npm install -D tailwindcss postcss autoprefixer
 - npx tailwindcss init -p
@@ -31,3 +34,7 @@ This is a portfolio website that showcases my projects and skills. It is built u
 - npm install shadcn-ui
 - npx shadcn@latest add button
 - npx shadcn@latest add input 
+- npx shadcn@latest add dropdown-menu
+- npm shadcn@latest add hover-card
+- npx shadcn@latest add sheet
+- npx shadcn@latest add collapsible
