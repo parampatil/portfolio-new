@@ -1,14 +1,10 @@
+import PageTransition from "@/components/PageTransitions/PageTransition";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white"
-    >
+    <PageTransition className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
       {/* Animated 404 Text */}
       <motion.h1
         initial={{ scale: 0.5, opacity: 0 }}
@@ -24,7 +20,7 @@ const NotFoundPage = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-        className="text-2xl mt-4 text-center"
+        className="mt-4 text-center text-2xl"
       >
         Oops! The page you're looking for doesn't exist.
       </motion.p>
@@ -52,12 +48,12 @@ const NotFoundPage = () => {
         className="mt-8"
       >
         <Link to="/">
-          <button className="px-6 py-3 bg-white text-blue-500 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition duration-300">
+          <button className="rounded-lg bg-white px-6 py-3 font-bold text-blue-500 shadow-lg transition duration-300 hover:bg-gray-100">
             Take Me Home
           </button>
         </Link>
       </motion.div>
-    </motion.div>
+    </PageTransition>
   );
 };
 

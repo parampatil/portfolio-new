@@ -41,3 +41,4 @@ This is a portfolio website that showcases my projects and skills. It is built u
 
 ### Setting up Magic UI
 - npx shadcn@latest add "https://magicui.design/r/typing-animation"
+- npx shadcn@latest add "https://magicui.design/r/text-animate"

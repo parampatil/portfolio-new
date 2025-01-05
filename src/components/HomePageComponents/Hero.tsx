@@ -15,9 +15,9 @@ const Hero = () => {
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-10 lg:w-1/2">
         {/* Name and Title Section */}
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-          exit={{ opacity: 0, y: -50 }}
+          initial={{y: -50 }}
+          animate={isInView ? { y: 0 } : { y: -50 }}
+          exit={{ y: -50 }}
           transition={{ duration: 1 }}
           className="text-left"
         >
@@ -57,14 +57,14 @@ const Hero = () => {
       </div>
       {/* Portrait Image */}
       <motion.div
-        initial={{ opacity: 0, translateY: 50 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={
           isInView
-            ? { opacity: 1, translateX: 0 }
-            : { opacity: 0, translateX: 50 }
+            ? { opacity: 1, scale: 1 }
+            : { opacity: 0, scale: 1 }
         }
-        exit={{ opacity: 0, translateX: 50 }}
-        transition={{ duration: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 1, delay: 0.3 }}
         className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2"
       >
         <img

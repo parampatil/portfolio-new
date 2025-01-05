@@ -39,7 +39,10 @@ const MobileSidebar = ({
       <SheetTrigger>
         <Menu size={24} />
       </SheetTrigger>
-      <SheetContent side="left" className="bg-gradient-to-r from-black/95 to-gray-800/90 bg-transparent text-white">
+      <SheetContent
+        side="left"
+        className="bg-transparent bg-gradient-to-r from-black/95 to-gray-800/90 text-white"
+      >
         <div className="p-4">
           {navItems.map((item) => (
             <MobileNavItem key={item.name} item={item} />
@@ -87,7 +90,7 @@ const MobileNavItem = ({ item }: { item: NavItem }) => {
           />
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent className="CollapsibleContent pl-4">
+      <CollapsibleContent className="CollapsibleContent ml-2 rounded-lg bg-white/10 pl-2">
         {item.dropdown.map((subItem) => (
           <NavLink
             key={subItem.name}
@@ -179,83 +182,106 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
       className="fixed left-0 top-0 z-50 w-full bg-gradient-to-b from-blue-600/50 to-blue-600/0 px-4 text-white shadow-md backdrop-blur-lg"
     >
       <div className="container mx-auto flex items-stretch justify-between">
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        className="cursor-pointer py-4 text-xl font-bold"
-        onClick={() => navigate("/")}
-      >
-        Param Patil
-      </motion.div>
-      <div className="flex items-stretch">
-        {isMobile ? (
-        <MobileSidebar
-          navItems={navItems}
-          user={!!user}
-          handleSignOut={handleSignOut}
-        />
-        ) : (
-        navItems.map((item) => (
-          <HoverCard key={item.name} openDelay={0} closeDelay={100}>
-          <HoverCardTrigger className="flex cursor-pointer items-center px-3 hover:bg-white/10">
-            <NavLink
-            to={item.path}
-            className={({ isActive }) =>
-              `transition-colors duration-300 ${
-              isActive ? "text-yellow-300" : "hover:text-gray-300"
-              }`
-            }
-            >
-            {item.name}
-            </NavLink>
-          </HoverCardTrigger>
-          <HoverCardContent>
-            <div className="p-2">
-            {item.dropdown.map((subItem) => (
-              <div key={subItem.name} className="py-1">
-              <NavLink
-                to={subItem.path}
-                className="transition-colors duration-300 hover:text-gray-300"
-              >
-                {subItem.name}
-              </NavLink>
+        <motion.div
+          initial={{ translateX: -100, opacity: 0 }}
+          animate={{ translateX: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          whileHover={{ scale: 1.1 }}
+          className="cursor-pointer py-3 font-berkshire text-2xl"
+          onClick={() => navigate("/")}
+        >
+            Param Patil
+        </motion.div>
+        <div className="flex items-stretch">
+          {isMobile ? (
+            <MobileSidebar
+              navItems={navItems}
+              user={!!user}
+              handleSignOut={handleSignOut}
+            />
+          ) : (
+            navItems.map((item) => (
+              <HoverCard key={item.name} openDelay={0} closeDelay={100}>
+                <HoverCardTrigger className="group relative flex cursor-pointer mix-blend-difference transition-all duration-300 hover:bg-white/10">
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `flex flex-1 items-center justify-center px-3 transition-colors duration-300 ${
+                        isActive ? "text-red-500" : "group-hover:text-red-500"
+                      }`
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        {isActive && (
+                          <motion.div
+                            layoutId="underline"
+                            className="absolute inset-0 border-b-2 border-red-500"
+                          />
+                        )}
+                        {item.name}
+                      </>
+                    )}
+                  </NavLink>
+                </HoverCardTrigger>
+                <HoverCardContent className="bg-white/90">
+                  <div className="p-2">
+                    {item.dropdown.map((subItem) => (
+                      <div key={subItem.name} className="py-1">
+                        <NavLink
+                          to={subItem.path}
+                          className="transition-colors duration-300 hover:text-gray-300"
+                        >
+                          {subItem.name}
+                        </NavLink>
+                      </div>
+                    ))}
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            ))
+          )}
+          {user && !isMobile && (
+            <>
+              <div className="group relative flex cursor-pointer mix-blend-difference transition-all duration-300 hover:bg-white/10">
+                <NavLink
+                  to="/admin"
+                  className={({ isActive }) =>
+                    `flex flex-1 items-center justify-center px-3 transition-colors duration-300 ${
+                      isActive ? "text-red-500" : "group-hover:text-red-500"
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {isActive && (
+                        <motion.div
+                          layoutId="underline"
+                          className="absolute inset-0 border-b-2 border-red-500"
+                        />
+                      )}
+                      Admin
+                    </>
+                  )}
+                </NavLink>
               </div>
-            ))}
-            </div>
-          </HoverCardContent>
-          </HoverCard>
-        ))
-        )}
-        {user && !isMobile && (
-        <>
-          <div className="flex cursor-pointer items-center px-3 hover:bg-white/10">
-          <NavLink
-            to="/admin"
-            className={({ isActive }) =>
-            `px-3 transition-colors duration-300 ${
-              isActive ? "text-yellow-300" : "hover:text-gray-300"
-            }`
-            }
-          >
-            Admin
-          </NavLink>
-          </div>
-          <div className="flex cursor-pointer items-center px-3">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleSignOut}
-            className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-red-600"
-          >
-            Sign Out
-          </motion.button>
-          </div>
-        </>
-        )}
-      </div>
+              <div className="flex cursor-pointer items-center px-3">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleSignOut}
+                  className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-red-600"
+                >
+                  Sign Out
+                </motion.button>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </motion.nav>
   );
