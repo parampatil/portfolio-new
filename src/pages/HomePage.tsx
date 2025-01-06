@@ -6,7 +6,7 @@ import ContactSection from "@/components/HomePageComponents/ContactSection";
 
 const HomePage = () => {
   return (
-    <PageTransition className="flex min-h-screen w-full flex-col items-center justify-center scroll-smooth bg-gray-100">
+    <PageTransition className="flex min-h-screen w-full flex-col items-center justify-center scroll-smooth">
       <Hero />
       <AboutSection />
       <ProjectsSection />

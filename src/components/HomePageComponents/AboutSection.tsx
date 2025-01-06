@@ -7,15 +7,25 @@ import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 import IULogo from "@/assets/images/Education Icons/IU Logo.png";
 import SPPULogo from "@/assets/images/Education Icons/SPPU Logo.png";
 
-import ReactLogo from "@/assets/images/Skills Icons/React Logo.png";
-import NextJSLogo from "@/assets/images/Skills Icons/NextJs.svg";
+import CplusLogo from "@/assets/images/Skills Icons/Cplus Logo.png";
+import CsharpLogo from "@/assets/images/Skills Icons/Csharp Logo.png";
+import JavaScriptLogo from "@/assets/images/Skills Icons/JavaScript Logo.png";
 import TypeScriptLogo from "@/assets/images/Skills Icons/Typescript Logo.svg";
 import PythonLogo from "@/assets/images/Skills Icons/Python Logo.png";
+
+import ReactLogo from "@/assets/images/Skills Icons/React Logo.png";
+import NextJSLogo from "@/assets/images/Skills Icons/NextJs.svg";
+import GCPLogo from "@/assets/images/Skills Icons/GCP Logo.png";
+import GitLogo from "@/assets/images/Skills Icons/Git Logo.png";
+import SQLLogo from "@/assets/images/Skills Icons/SQL Logo.png";
 import SocialMediaDock from "../SocialMediaDock";
 
+import AboutWave from "@/assets/images/Backgrounds/AboutWave";
+
 const skillsInner = [
-  { name: "React", icon: ReactLogo },
-  { name: "Next.js", icon: NextJSLogo },
+  { name: "C++", icon: CplusLogo },
+  { name: "C#", icon: CsharpLogo },
+  { name: "JavaScript", icon: JavaScriptLogo },
   { name: "TypeScript", icon: TypeScriptLogo },
   { name: "Python", icon: PythonLogo },
 ];
@@ -23,8 +33,9 @@ const skillsInner = [
 const skillsOuter = [
   { name: "React", icon: ReactLogo },
   { name: "Next.js", icon: NextJSLogo },
-  { name: "TypeScript", icon: TypeScriptLogo },
-  { name: "Python", icon: PythonLogo },
+  { name: "Google Cloud", icon: GCPLogo },
+  { name: "Git", icon: GitLogo },
+  { name: "SQL", icon: SQLLogo },
 ];
 
 const universities = [
@@ -50,9 +61,9 @@ const AboutSection = () => {
   return (
     <section
       id="about-me"
-      className="ite flex min-h-screen w-full justify-center bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 text-white"
+      className="relative flex min-h-screen w-full justify-center bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 text-white"
     >
-      <div className="container px-6">
+      <div className="container p-2 md:p-0">
         {/* Section Title */}
         <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
           About Me
@@ -86,7 +97,8 @@ const AboutSection = () => {
                   Skills
                 </span>
 
-                <OrbitingCircles iconSize={40}>
+                {/* Outer Orbit */}
+                <OrbitingCircles iconSize={40} radius={180}>
                   {skillsOuter.map((skill) => (
                     <div key={skill.name} className="relative">
                       <img src={skill.icon} alt={skill.name} />
@@ -96,6 +108,7 @@ const AboutSection = () => {
                     </div>
                   ))}
                 </OrbitingCircles>
+                {/* Inner Orbit */}
                 <OrbitingCircles
                   iconSize={40}
                   radius={100}
@@ -182,7 +195,7 @@ const AboutSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="col-span-6 md:col-span-3 lg:col-span-3"
+            className="col-span-6 md:col-span-3 lg:col-span-4 xl:col-span-3"
           >
             <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
               <h3 className="mb-4 text-xl font-semibold text-yellow-400">
@@ -192,15 +205,15 @@ const AboutSection = () => {
                 I am always eager to work on innovative projects and solve
                 challenging problems. Let’s connect and discuss your ideas.
               </p>
-              <div className="flex flex-col lg:flex-row items-center space-x-4">
+              <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
                 <a
                   href="#/contact"
-                  className="inline-block rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-2 font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
+                  className="my-auto flex h-fit w-fit items-center rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
                 >
                   Get in Touch
                 </a>
                 {/* Social media Icons */}
-                <div className="flex-1 relative">
+                <div className="flex-1">
                   <SocialMediaDock />
                 </div>
               </div>
@@ -212,7 +225,7 @@ const AboutSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="col-span-6 md:col-span-3 lg:col-span-1"
+            className="col-span-6 md:col-span-3 lg:col-span-6 xl:col-span-1"
           >
             <MagicCard className="p-6">
               <h3 className="mb-4 text-xl font-semibold text-green-400">
@@ -231,6 +244,9 @@ const AboutSection = () => {
           </motion.div>
         </div>
       </div>
+      
+      {/* Background Wave */}
+      <AboutWave />
     </section>
   );
 };
