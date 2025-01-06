@@ -30,6 +30,9 @@ This is a portfolio website that showcases my projects and skills. It is built u
 ### Setting up Framer Motion
 - npm install motion
 
+### Setting up React Icons
+- npm install react-icons
+
 ### Setting up ShadCn UI
 - npm install shadcn-ui
 - npx shadcn@latest add button
@@ -38,6 +41,8 @@ This is a portfolio website that showcases my projects and skills. It is built u
 - npm shadcn@latest add hover-card
 - npx shadcn@latest add sheet
 - npx shadcn@latest add collapsible
+- npx shadcn@latest add toast
+
 
 ### Setting up Magic UI
 - npx shadcn@latest add "https://magicui.design/r/typing-animation"
@@ -45,4 +50,6 @@ This is a portfolio website that showcases my projects and skills. It is built u
 - npx shadcn@latest add "https://magicui.design/r/magic-card"
 - npx shadcn@latest add "https://magicui.design/r/bento-grid"
 - npx shadcn@latest add "https://magicui.design/r/animated-shiny-text"
+- npx shadcn@latest add "https://magicui.design/r/orbiting-circles"
+- npx shadcn@latest add "https://magicui.design/r/dock"
 

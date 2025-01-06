@@ -1,17 +1,26 @@
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { MagicCard } from "@/components/ui/magic-card";
 import AnimatedShinyText from "@/components/ui/animated-shiny-text";
+import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 
-import IULogo from "@/assets/IU Logo.png";
-import SPPULogo from "@/assets/SPPU Logo.png";
+import IULogo from "@/assets/images/Education Icons/IU Logo.png";
+import SPPULogo from "@/assets/images/Education Icons/SPPU Logo.png";
 
-import ReactLogo from "@/assets/React Logo.png";
-import NextJSLogo from "@/assets/nextjs.svg";
-import TypeScriptLogo from "@/assets/Typescript Logo.svg";
-import PythonLogo from "@/assets/Python Logo.png";
-import { Link } from "react-router-dom";
+import ReactLogo from "@/assets/images/Skills Icons/React Logo.png";
+import NextJSLogo from "@/assets/images/Skills Icons/NextJs.svg";
+import TypeScriptLogo from "@/assets/images/Skills Icons/Typescript Logo.svg";
+import PythonLogo from "@/assets/images/Skills Icons/Python Logo.png";
+import SocialMediaDock from "../SocialMediaDock";
 
-const skills = [
+const skillsInner = [
+  { name: "React", icon: ReactLogo },
+  { name: "Next.js", icon: NextJSLogo },
+  { name: "TypeScript", icon: TypeScriptLogo },
+  { name: "Python", icon: PythonLogo },
+];
+
+const skillsOuter = [
   { name: "React", icon: ReactLogo },
   { name: "Next.js", icon: NextJSLogo },
   { name: "TypeScript", icon: TypeScriptLogo },
@@ -39,7 +48,10 @@ const projects = [
 
 const AboutSection = () => {
   return (
-    <section id="about-me" className="w-full flex justify-center ite bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 text-white min-h-screen">
+    <section
+      id="about-me"
+      className="ite flex min-h-screen w-full justify-center bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 text-white"
+    >
       <div className="container px-6">
         {/* Section Title */}
         <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
@@ -55,39 +67,51 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-full md:col-span-full lg:row-span-full"
           >
-            <MagicCard className="bg-gray/90 rounded-lg p-6 shadow-lg hover:bg-gradient-to-br">
+            <MagicCard className="rounded-lg p-6 shadow-lg">
               Experienced in leading teams and building high-performance web
               applications.
             </MagicCard>
           </motion.div>
-          
+
           {/* Skills Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="col-span-6 md:col-span-3 lg:col-span-2 row-span-2"
+            className="col-span-6 row-span-2 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="rounded-lg bg-gray-800/80 p-6 shadow-lg hover:shadow-xl">
-              <h3 className="mb-4 text-xl font-semibold text-purple-400">
-                Top Skills
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {skills.map((skill) => (
-                  <motion.div
-                    key={skill.name}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex flex-col items-center"
-                  >
-                    <img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="mb-2 h-12 w-12"
-                    />
-                    <p className="text-sm text-gray-300">{skill.name}</p>
-                  </motion.div>
-                ))}
+            <MagicCard className="flex size-full flex-col items-center justify-center rounded-lg p-6 shadow-lg hover:shadow-xl">
+              <div className="relative flex size-full min-h-[400px] flex-col items-center justify-center">
+                <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
+                  Skills
+                </span>
+
+                <OrbitingCircles iconSize={40}>
+                  {skillsOuter.map((skill) => (
+                    <div key={skill.name} className="relative">
+                      <img src={skill.icon} alt={skill.name} />
+                      <p className="absolute left-1/2 -translate-x-1/2 text-center text-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        {skill.name}
+                      </p>
+                    </div>
+                  ))}
+                </OrbitingCircles>
+                <OrbitingCircles
+                  iconSize={40}
+                  radius={100}
+                  speed={1.5}
+                  delay={20}
+                  reverse
+                >
+                  {skillsInner.map((skill) => (
+                    <div key={skill.name} className="relative">
+                      <img src={skill.icon} alt={skill.name} />
+                      <p className="absolute left-1/2 -translate-x-1/2 text-center text-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        {skill.name}
+                      </p>
+                    </div>
+                  ))}
+                </OrbitingCircles>
               </div>
             </MagicCard>
           </motion.div>
@@ -99,7 +123,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="rounded-lg bg-gray-800/80 p-6 shadow-lg hover:shadow-xl">
+            <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
               <h3 className="mb-4 text-xl font-semibold text-blue-400">
                 Education
               </h3>
@@ -114,7 +138,7 @@ const AboutSection = () => {
                     <img
                       src={university.logo}
                       alt={university.name}
-                      className="object-contain h-12 w-12"
+                      className="h-12 w-12 object-contain"
                     />
                     <div>
                       <p className="font-medium">{university.name}</p>
@@ -129,53 +153,80 @@ const AboutSection = () => {
           </motion.div>
 
           {/* Projects Card */}
-            <motion.div
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
-            >
-            <MagicCard className="rounded-lg bg-gray-800/80 p-6 shadow-lg hover:shadow-xl">
+          >
+            <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
               <h3 className="mb-4 text-xl font-semibold text-pink-400">
-              Projects
+                Projects
               </h3>
               <ul className="space-y-2 text-sm text-gray-300">
-              {projects.map((project, idx) => (
-                <li key={idx}>{project}</li>
-              ))}
+                {projects.map((project, idx) => (
+                  <li key={idx}>{project}</li>
+                ))}
               </ul>
               <Link
-              to="/#projects"
-              className="mt-4 inline-block rounded-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 px-4 py-2 font-medium transition-transform duration-300 hover:-translate-y-[2px] hover:bg-gradient-to-r hover:text-white"
+                to="/#projects"
+                className="mt-4 inline-block rounded-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 px-4 py-2 font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
               >
-              View All Projects
+                View All Projects
               </Link>
             </MagicCard>
-            </motion.div>
-
-          
+          </motion.div>
 
           {/* Call-to-action Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="col-span-6 md:col-span-3 lg:col-span-2"
+            className="col-span-6 md:col-span-3 lg:col-span-3"
           >
-            <MagicCard className="rounded-lg bg-gray-800/80 p-6 shadow-lg hover:shadow-xl">
+            <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
               <h3 className="mb-4 text-xl font-semibold text-yellow-400">
                 Let’s Collaborate!
               </h3>
               <p className="mb-4 text-sm text-gray-300">
                 I am always eager to work on innovative projects and solve
-                challenging problems.
+                challenging problems. Let’s connect and discuss your ideas.
               </p>
-              <a
-                href="#/about"
-                className="inline-block rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-2 font-medium transition-transform duration-300 hover:-translate-y-[2px] hover:bg-gradient-to-r hover:text-white"
+              <div className="flex flex-col lg:flex-row items-center space-x-4">
+                <a
+                  href="#/contact"
+                  className="inline-block rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-2 font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
+                >
+                  Get in Touch
+                </a>
+                {/* Social media Icons */}
+                <div className="flex-1 relative">
+                  <SocialMediaDock />
+                </div>
+              </div>
+            </MagicCard>
+          </motion.div>
+
+          {/* Learn more about me Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="col-span-6 md:col-span-3 lg:col-span-1"
+          >
+            <MagicCard className="p-6">
+              <h3 className="mb-4 text-xl font-semibold text-green-400">
+                More About Me
+              </h3>
+              <p className="mb-4 text-sm text-gray-300">
+                Get to know more about me and my journey.
+              </p>
+              <Link
+                to="/about"
+                className="rounded-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 px-4 py-2 font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
               >
-                Learn More About Me
-              </a>
+                Learn More
+              </Link>
             </MagicCard>
           </motion.div>
         </div>
