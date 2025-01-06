@@ -9,13 +9,13 @@ const Hero = () => {
 
   return (
     <section
-      className="flex w-full flex-col items-center justify-between overflow-hidden bg-gray-900 text-white lg:flex-row"
+      className="flex w-full flex-col items-center justify-between overflow-hidden text-white dark:bg-gray-900 lg:flex-row"
       ref={ref}
     >
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-10 lg:w-1/2">
         {/* Name and Title Section */}
         <motion.div
-          initial={{y: -50 }}
+          initial={{ y: -50 }}
           animate={isInView ? { y: 0 } : { y: -50 }}
           exit={{ y: -50 }}
           transition={{ duration: 1 }}
@@ -27,29 +27,28 @@ const Hero = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               exit={{ opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 100 }}
-              className="font-berkshire bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-8xl text-transparent"
+              className="w-fit text-4xl"
             >
-              Param
+              Hi, my name is
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               exit={{ opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
-              className="font-berkshire bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-8xl text-transparent"
+              className="w-fit bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 bg-clip-text font-berkshire text-8xl text-transparent"
             >
-              Patil
+              Param Patil
             </motion.h1>
           </div>
-          <p className="mt-4 text-lg text-gray-400 md:text-xl">
-            Software Engineer | Indiana University Bloomington | MS in Computer
-            Science
-          </p>
-          <div className="mt-4 flex flex-col md:flex-row items-center space-x-1">
-            <span className="mr-2 inline-block rounded-full bg-blue-500 px-3 py-1 text-sm font-semibold text-white text-nowrap animate-pulse">
-              2025 Goal
+          <p className="mt-4 text-lg dark:text-gray-300 md:text-xl">
+          your friendly neighborhood coder who excels at React-ing to challenges, debugging life’s errors, and building Next-level solutions
+          </p> 
+          <div className="mt-4 flex flex-col items-center space-x-1 md:flex-row">
+            <span className="mr-2 inline-block animate-pulse text-nowrap rounded-full bg-blue-500 px-3 py-1 text-sm font-semibold text-white">
+              My 2025 Goal
             </span>
-            <p className="text-lg text-gray-400 md:text-xl">
+            <p className="text-lg dark:text-gray-400 md:text-xl">
               Seeking full-time opportunities as Software Development Engineer
             </p>
           </div>
@@ -58,14 +57,10 @@ const Hero = () => {
       {/* Portrait Image */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
-        animate={
-          isInView
-            ? { opacity: 1, scale: 1 }
-            : { opacity: 0, scale: 1 }
-        }
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2"
+        className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2 lg:rounded-bl-[40%]"
       >
         <img
           src={heroImage}

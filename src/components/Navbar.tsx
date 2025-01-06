@@ -37,7 +37,7 @@ const MobileSidebar = ({
   return (
     <Sheet modal={false}>
       <SheetTrigger>
-        <Menu size={24} />
+        <Menu size={24} className="text-black dark:text-white"/>
       </SheetTrigger>
       <SheetContent
         side="left"
@@ -182,19 +182,18 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-      className="fixed left-0 top-0 z-50 w-full bg-gradient-to-b from-blue-600/50 to-blue-600/0 px-4 text-white shadow-md backdrop-blur-lg"
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="fixed left-0 top-0 z-50 w-full px-4 transition-all duration-300 hover:shadow-md hover:backdrop-blur-sm"
     >
       <div className="container mx-auto flex items-stretch justify-between">
         <motion.div
           initial={{ translateX: -100, opacity: 0 }}
           animate={{ translateX: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          whileHover={{ scale: 1.1 }}
-          className="cursor-pointer py-3 font-berkshire text-2xl"
+          transition={{ duration: 0.5, delay: 1 }}
+          className="cursor-pointer py-3 font-berkshire text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent"
           onClick={() => navigate("/")}
         >
-            Param Patil
+          Param Patil
         </motion.div>
         <div className="flex items-stretch">
           {isMobile ? (
@@ -206,12 +205,12 @@ const Navbar = () => {
           ) : (
             navItems.map((item) => (
               <HoverCard key={item.name} openDelay={0} closeDelay={100}>
-                <HoverCardTrigger className="group relative flex cursor-pointer mix-blend-difference transition-all duration-300 hover:bg-white/10">
+                <HoverCardTrigger className="group relative flex cursor-pointer transition-all duration-300 hover:bg-white/10">
                   <NavLink
                     to={item.path}
                     className={({ isActive }) =>
-                      `flex flex-1 items-center justify-center px-3 transition-colors duration-300 ${
-                        isActive ? "text-red-500" : "group-hover:text-red-500"
+                      `flex flex-1 items-center justify-center px-3 transition-all duration-300 font-semibold group-hover:translate-y-1  ${
+                        isActive ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent" : "text-white group-hover:text-black/80"
                       }`
                     }
                   >
@@ -220,7 +219,7 @@ const Navbar = () => {
                         {isActive && (
                           <motion.div
                             layoutId="underline"
-                            className="absolute inset-0 border-b-2 border-red-500"
+                            className="absolute inset-0 border-t-2 border-red-500"
                           />
                         )}
                         {item.name}
@@ -228,13 +227,13 @@ const Navbar = () => {
                     )}
                   </NavLink>
                 </HoverCardTrigger>
-                <HoverCardContent className="bg-white/90">
+                <HoverCardContent className="bg-white/90 dark:bg-slate-900/90 border-none">
                   <div className="p-2">
                     {item.dropdown.map((subItem) => (
                       <div key={subItem.name} className="py-1">
                         <NavLink
                           to={subItem.path}
-                          className="transition-colors duration-300 hover:text-gray-300"
+                          className="transition-colors duration-300 hover:text-gray-500"
                         >
                           {subItem.name}
                         </NavLink>
@@ -247,12 +246,12 @@ const Navbar = () => {
           )}
           {user && !isMobile && (
             <>
-              <div className="group relative flex cursor-pointer mix-blend-difference transition-all duration-300 hover:bg-white/10">
+              <div className="group relative flex cursor-pointer transition-all duration-300 hover:bg-white/10">
                 <NavLink
                   to="/admin"
                   className={({ isActive }) =>
-                    `flex flex-1 items-center justify-center px-3 transition-colors duration-300 ${
-                      isActive ? "text-red-500" : "group-hover:text-red-500"
+                    `flex flex-1 items-center justify-center px-3 transition-all duration-300 font-semibold group-hover:translate-y-1 ${
+                      isActive ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent" : "text-white group-hover:text-black/80"
                     }`
                   }
                 >
@@ -261,7 +260,7 @@ const Navbar = () => {
                       {isActive && (
                         <motion.div
                           layoutId="underline"
-                          className="absolute inset-0 border-b-2 border-red-500"
+                          className="absolute inset-0 border-t-2 border-red-500"
                         />
                       )}
                       Admin
