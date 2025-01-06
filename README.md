@@ -46,7 +46,7 @@ This is a portfolio website that showcases my projects and skills. It is built u
 
 ### Setting up Magic UI
 - npx shadcn@latest add "https://magicui.design/r/typing-animation"
-- npx shadcn@latest add "https://magicui.design/r/text-animate"
+- npx shadcn@latest add "https://magicui.design/r/text-animate" --Got Rid of this due to type errors
 - npx shadcn@latest add "https://magicui.design/r/magic-card"
 - npx shadcn@latest add "https://magicui.design/r/bento-grid"
 - npx shadcn@latest add "https://magicui.design/r/animated-shiny-text"
