@@ -20,7 +20,7 @@ import GitLogo from "@/assets/images/Skills Icons/Git Logo.png";
 import SQLLogo from "@/assets/images/Skills Icons/SQL Logo.png";
 import SocialMediaDock from "../SocialMediaDock";
 
-import AboutWave from "@/assets/images/Backgrounds/AboutWave";
+import AboutWave from "@/assets/Images/Backgrounds/AboutWave";
 
 const skillsInner = [
   { name: "C++", icon: CplusLogo },
@@ -246,7 +246,7 @@ const AboutSection = () => {
       </div>
       
       {/* Background Wave */}
-      <AboutWave />
+      {/* <AboutWave /> */}
     </section>
   );
 };
