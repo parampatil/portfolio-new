@@ -53,4 +53,6 @@ This is a portfolio website that showcases my projects and skills. It is built u
 - npx shadcn@latest add "https://magicui.design/r/orbiting-circles"
 - npx shadcn@latest add "https://magicui.design/r/dock"
 - npx shadcn@latest add "https://magicui.design/r/shine-border"
+- npx shadcn@latest add "https://magicui.design/r/interactive-hover-button"
+- npx shadcn@latest add "https://magicui.design/r/rainbow-button"
 

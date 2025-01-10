@@ -50,7 +50,7 @@ const SocialMediaDock = () => {
               ? 0
               : 0
       }
-      className="m-0 lg:mx-auto lg:mt-0"
+      className="m-0 lg:mx-auto lg:mt-0 text-white"
     >
       <DockIcon className="bg-red-600 dark:bg-red-500">
         <button
@@ -66,7 +66,7 @@ const SocialMediaDock = () => {
           <SiGmail className="m-auto" />
         </button>
       </DockIcon>
-      <DockIcon className="bg-black/10 dark:bg-white/10">
+      <DockIcon className="bg-black/50 dark:bg-white/10">
         <button
           className="size-full"
           onClick={() => {
@@ -90,7 +90,7 @@ const SocialMediaDock = () => {
           <FaLinkedin className="m-auto" />
         </a>
       </DockIcon>
-      <DockIcon className="bg-black/10 dark:bg-white/10">
+      <DockIcon className="bg-black/50 dark:bg-white/10">
         <a
           href="https://github.com/parampatil"
           target="_blank"

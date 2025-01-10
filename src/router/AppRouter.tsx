@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import ScrollToAnchor from "./ScrollToAnchor";
 import { AnimatePresence } from "motion/react";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/NavbarComponents/Navbar";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import AdminPage from "@/pages/AdminPage";
@@ -17,7 +17,7 @@ const AppRouter = () => {
     <>
       <ScrollToAnchor />
       <Navbar />
-      <AnimatePresence>
+      <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />

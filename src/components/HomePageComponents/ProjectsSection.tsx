@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import ShineBorder from "@/components/ui/shine-border";
-import AboutWave from '@/assets/Images/Backgrounds/AboutWave';
 
 const projects = [
   { title: 'Project One', description: 'Description for project one.' },
@@ -42,7 +41,6 @@ const ProjectsSection = () => {
           </a>
         </div>
       </div>
-      <AboutWave />
     </section>
   );
 };

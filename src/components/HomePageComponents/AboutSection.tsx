@@ -19,8 +19,9 @@ import GCPLogo from "@/assets/images/Skills Icons/GCP Logo.png";
 import GitLogo from "@/assets/images/Skills Icons/Git Logo.png";
 import SQLLogo from "@/assets/images/Skills Icons/SQL Logo.png";
 import SocialMediaDock from "../SocialMediaDock";
+import ButtonThemed from "../ui/ButtonThemed";
 
-import AboutWave from "@/assets/Images/Backgrounds/AboutWave";
+// import AboutWave from "@/assets/Images/Backgrounds/AboutWave";
 
 const skillsInner = [
   { name: "C++", icon: CplusLogo },
@@ -61,8 +62,13 @@ const AboutSection = () => {
   return (
     <section
       id="about-me"
-      className="relative flex min-h-screen w-full justify-center bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 text-white"
+      className="relative flex min-h-screen w-full justify-center bg-white dark:bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 dark:text-white"
     >
+      <div className="absolute bottom-0 left-0 h-40 bg-red-400"
+      style={{
+        clipPath: "ellipse(50% 100% at 50% 100%)",
+      }} />
+     
       <div className="container p-2 md:p-0">
         {/* Section Title */}
         <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
@@ -78,7 +84,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-full md:col-span-full lg:row-span-full"
           >
-            <MagicCard className="rounded-lg p-6 shadow-lg">
+            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
               Experienced in leading teams and building high-performance web
               applications.
             </MagicCard>
@@ -91,7 +97,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-6 row-span-2 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="flex size-full flex-col items-center justify-center rounded-lg p-6 shadow-lg hover:shadow-xl">
+            <MagicCard className="flex size-full flex-col items-center justify-center p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
               <div className="relative flex size-full min-h-[400px] flex-col items-center justify-center">
                 <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
                   Skills
@@ -136,7 +142,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
+            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-blue-400">
                 Education
               </h3>
@@ -155,7 +161,7 @@ const AboutSection = () => {
                     />
                     <div>
                       <p className="font-medium">{university.name}</p>
-                      <p className="text-sm text-gray-300">
+                      <p className="text-sm text-gray-600 dark:text-gray-300">
                         {university.details}
                       </p>
                     </div>
@@ -172,21 +178,19 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
+            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-pink-400">
                 Projects
               </h3>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <ul className="space-y-2 text-sm text-gray-600 mix-blend-difference">
                 {projects.map((project, idx) => (
                   <li key={idx}>{project}</li>
                 ))}
               </ul>
-              <Link
-                to="/#projects"
-                className="mt-4 inline-block rounded-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 px-4 py-2 font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
-              >
+                <Link to="/#projects"
+                className="mt-4 flex h-fit w-fit items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white">
                 View All Projects
-              </Link>
+                </Link>
             </MagicCard>
           </motion.div>
 
@@ -197,21 +201,17 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-6 md:col-span-3 lg:col-span-4 xl:col-span-3"
           >
-            <MagicCard className="rounded-lg p-6 shadow-lg hover:shadow-xl">
+            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-yellow-400">
                 Let’s Collaborate!
               </h3>
-              <p className="mb-4 text-sm text-gray-300">
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
                 I am always eager to work on innovative projects and solve
                 challenging problems. Let’s connect and discuss your ideas.
               </p>
               <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
-                <a
-                  href="#/contact"
-                  className="my-auto flex h-fit w-fit items-center rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
-                >
-                  Get in Touch
-                </a>
+                <ButtonThemed to="#/contact">Get in Touch</ButtonThemed>
+               
                 {/* Social media Icons */}
                 <div className="flex-1">
                   <SocialMediaDock />
@@ -227,16 +227,16 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-6 md:col-span-3 lg:col-span-6 xl:col-span-1"
           >
-            <MagicCard className="p-6">
+            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-green-400">
                 More About Me
               </h3>
-              <p className="mb-4 text-sm text-gray-300">
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
                 Get to know more about me and my journey.
               </p>
               <Link
                 to="/about"
-                className="rounded-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 px-4 py-2 font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
+                className="mt-4 flex h-fit w-fit items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
               >
                 Learn More
               </Link>
@@ -244,7 +244,7 @@ const AboutSection = () => {
           </motion.div>
         </div>
       </div>
-      
+
       {/* Background Wave */}
       {/* <AboutWave /> */}
     </section>

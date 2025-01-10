@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import heroImage from "@/assets/hero2.jpg";
 
+import { BackgroundLines } from "@/components/ui/background-lines";
+
 const Hero = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
 
   return (
     <section
-      className="flex w-full flex-col items-center justify-between overflow-hidden text-white dark:bg-gray-900 lg:flex-row"
+      className="flex w-full flex-col items-center justify-between overflow-hidden dark:text-white bg-white dark:bg-gray-900 lg:flex-row"
       ref={ref}
     >
-      <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-10 lg:w-1/2">
+      <BackgroundLines className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-10 lg:w-1/2">
         {/* Name and Title Section */}
         <motion.div
           initial={{ y: -50 }}
@@ -53,13 +55,9 @@ const Hero = () => {
             </p>
           </div>
         </motion.div>
-      </div>
+      </BackgroundLines>
       {/* Portrait Image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 1, delay: 0.3 }}
+      <div
         className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2 lg:rounded-bl-[40%]"
       >
         <img
@@ -72,7 +70,7 @@ const Hero = () => {
               "linear-gradient(to right, transparent, black 50%)",
           }}
         />
-      </motion.div>
+      </div>
       {/* Button to scroll down */}
       <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center">
         <motion.div
