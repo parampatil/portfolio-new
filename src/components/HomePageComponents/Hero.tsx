@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import heroImage from "@/assets/hero2.jpg";
+import heroImage from "@/assets/Images/Hero.jpg";
 
 import { BackgroundLines } from "@/components/ui/background-lines";
 
