@@ -12,10 +12,8 @@ export const navItems = [
       name: "About",
       path: "/about",
       dropdown: [
-        { name: "Introduction", path: "/about#introduction" },
+        { name: "Timeline", path: "/about#timeline" },
         { name: "Skills", path: "/about#skills" },
-        { name: "Education", path: "/about#education" },
-        { name: "Experience", path: "/about#experience" },
         { name: "Achievements", path: "/about#achievements" },
       ],
     },

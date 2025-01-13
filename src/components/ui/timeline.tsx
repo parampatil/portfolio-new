@@ -51,7 +51,7 @@ export const Timeline = ({
         initial={{ opacity: 0, y: 50 }}
         animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 1 }}
-        className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10"
+        className="mx-auto max-w-7xl px-4 pt-16 2xl:pt-20 md:px-8 lg:px-10"
       >
         <motion.h2
           initial={{ opacity: 0, y: 50 }}

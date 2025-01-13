@@ -5,6 +5,7 @@ import BornCard from "@/components/AboutPageComponents/BornCard";
 
 // Icons
 import IULogo from "@/assets/images/Education Icons/IU Logo.png";
+import IUDiningLogo from "@/assets/images/Career Icons/IUDining Logo.jpg";
 import SPPULogo from "@/assets/images/Education Icons/SPPU Logo.png";
 import MaharashtraBoardLogo from "@/assets/images/Education Icons/MaharashtraBoard Logo.png";
 import SSRVMLogo from "@/assets/images/Education Icons/SSRVM Logo.png";
@@ -17,6 +18,29 @@ interface TimelineEntry {
 }
 
 const data: TimelineEntry[] = [
+  {
+    title: "2024 May",
+    category: "education",
+    content: (
+      <EducationItem
+        degree="Master's in Computer Science"
+        institution="Indiana University - Bloomington"
+        duration="Aug 2022 - May 2024"
+        grade="3.7/4.0"
+        courses={[
+          "Applied Algorithm",
+          "Computer Networks",
+          "Elements of Artificial Intelligence",
+          "Software Engineering",
+          "Advanced Database Concepts",
+          "Applied Machine Learning",
+          "Applied Database Technologies",
+          "Engineering Cloud Computing",
+        ]}
+        logoUrl={IULogo}
+      />
+    ),
+  },
   {
     title: "2024 January",
     category: "career",
@@ -41,25 +65,22 @@ const data: TimelineEntry[] = [
     ),
   },
   {
-    title: "2024 May",
-    category: "education",
+    title: "2022 August",
+    category: "career",
     content: (
-      <EducationItem
-        degree="Master's in Computer Science"
-        institution="Indiana University - Bloomington"
+      <CareerItem
+        title="Inventory Manager"
+        company="IU Dining"
         duration="Aug 2022 - May 2024"
-        grade="3.7/4.0"
-        courses={[
-          "Applied Algorithm",
-          "Computer Networks",
-          "Elements of Artificial Intelligence",
-          "Software Engineering",
-          "Advanced Database Concepts",
-          "Applied Machine Learning",
-          "Applied Database Technologies",
-          "Engineering Cloud Computing",
+        description="As an Inventory Assistant at IU Dining, I was responsible for counting and reporting stock levels, optimizing the inventory counting process, and reorganizing storage for efficient retrieval. I implemented binning systems in the storage room and gathered feedback to continuously improve inventory management practices."
+        technologies={[
+          "Microsoft Excel",
+          "Inventory Software",
+          "Teamwork",
+          "Communication",
+          "Bin Systems",
         ]}
-        logoUrl={IULogo}
+        logoUrl={IUDiningLogo}
       />
     ),
   },
@@ -98,7 +119,7 @@ const data: TimelineEntry[] = [
     ),
   },
   {
-    title: "2022 May",
+    title: "2018 May",
     category: "education",
     content: (
       <EducationItem
@@ -116,14 +137,13 @@ const data: TimelineEntry[] = [
     content: (
       <EducationItem
         degree="Secondary Education"
-        institution="Laxmanrao Apte Junior College"
+        institution="Sri Sri Ravi Shankar Vidya Mandir"
         duration="Aug 2016 - May 2018"
         courses={[
           "Science",
           "Mathematics",
           "Social Science",
           "English",
-          "Hindi",
         ]}
         logoUrl={SSRVMLogo}
       />
