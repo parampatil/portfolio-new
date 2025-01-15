@@ -18,7 +18,7 @@ export function MagicCard({
   className,
   gradientSize = 200,
   gradientColor = "#262626",
-  gradientOpacity = 0.8,
+  gradientOpacity = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 0.9 : 0.3,
   gradientFrom = "#9E7AFF",
   gradientTo = "#FE8BBB",
 }: MagicCardProps) {
@@ -99,6 +99,7 @@ export function MagicCard({
               hsl(var(--border)) 100%
             )
           `,
+          opacity: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 0.9 : 0.3,
         }}
       />
     </div>

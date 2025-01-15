@@ -54,7 +54,7 @@ const SocialMediaDock = () => {
     >
       <DockIcon className="bg-red-600 dark:bg-red-500">
         <button
-          className="size-full"
+          className="size-full "
           onClick={() => {
             navigator.clipboard.writeText("paramrpatil@gmail.com");
             toast({

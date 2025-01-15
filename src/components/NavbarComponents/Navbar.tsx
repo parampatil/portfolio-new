@@ -147,7 +147,10 @@ const Navbar = () => {
                             {isActive && (
                               <motion.div
                                 layoutId="underline"
-                                className="absolute inset-0 border-t-2 border-red-500"
+                                className="absolute inset-0 h-0 border-t-2 border-red-500"
+                                style={{
+                                  boxShadow: "0 0 2em 0.4em rgba(255, 0, 0, 0.5)",
+                                }}
                               />
                             )}
                             {item.name}
