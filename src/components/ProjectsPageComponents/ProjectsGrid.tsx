@@ -14,7 +14,9 @@ const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
       case 'Top':
         return projects.filter(p => p.isTopProject);
       case 'Recent':
-        return [...projects].sort((a, b) => b.date.getTime() - a.date.getTime());
+        return [...projects]
+          .filter(p => p.category === 'Recent')
+          .sort((a, b) => b.date.getTime() - a.date.getTime());
       case 'UI Components':
         return projects.filter(p => p.category === 'UI Components');
       default:

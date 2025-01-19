@@ -35,13 +35,15 @@ const AboutSection = () => {
   return (
     <section
       id="about-me"
-      className="relative flex min-h-screen w-full justify-center bg-white dark:bg-gradient-to-b from-gray-900 via-black to-gray-800 py-16 dark:text-white"
+      className="relative flex min-h-screen w-full justify-center bg-white from-gray-900 via-black to-gray-800 py-16 dark:bg-gradient-to-b dark:text-white"
     >
-      <div className="absolute bottom-0 left-0 h-40 bg-red-400"
-      style={{
-        clipPath: "ellipse(50% 100% at 50% 100%)",
-      }} />
-     
+      <div
+        className="absolute bottom-0 left-0 h-40 bg-red-400"
+        style={{
+          clipPath: "ellipse(50% 100% at 50% 100%)",
+        }}
+      />
+
       <div className="container p-2 md:p-0">
         {/* Section Title */}
         <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
@@ -57,7 +59,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-full md:col-span-full lg:row-span-full"
           >
-            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
+            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
               Experienced in leading teams and building high-performance web
               applications.
             </MagicCard>
@@ -70,7 +72,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-6 row-span-2 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="flex size-full flex-col items-center justify-center p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
+            <MagicCard className="flex size-full flex-col items-center justify-center p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
               <SkillsCard />
             </MagicCard>
           </motion.div>
@@ -82,7 +84,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
+            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-blue-400">
                 Education
               </h3>
@@ -118,7 +120,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
+            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-pink-400">
                 Projects
               </h3>
@@ -127,10 +129,12 @@ const AboutSection = () => {
                   <li key={idx}>{project}</li>
                 ))}
               </ul>
-                <Link to="/#projects"
-                className="mt-4 flex h-fit w-fit items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white">
+              <Link
+                to="/#projects"
+                className="mt-4 flex h-fit w-fit flex-1 items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
+              >
                 View All Projects
-                </Link>
+              </Link>
             </MagicCard>
           </motion.div>
 
@@ -141,7 +145,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-6 md:col-span-3 lg:col-span-4 xl:col-span-3"
           >
-            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
+            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-yellow-400">
                 Let’s Collaborate!
               </h3>
@@ -151,7 +155,7 @@ const AboutSection = () => {
               </p>
               <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
                 <ButtonThemed to="#/contact">Get in Touch</ButtonThemed>
-               
+
                 {/* Social media Icons */}
                 <div className="flex-1">
                   <SocialMediaDock />
@@ -167,7 +171,7 @@ const AboutSection = () => {
             transition={{ duration: 0.5 }}
             className="col-span-6 md:col-span-3 lg:col-span-6 xl:col-span-1"
           >
-            <MagicCard className="p-6 transition-shadow duration-300 shadow-lg hover:shadow-2xl">
+            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
               <h3 className="mb-4 text-xl font-semibold text-green-400">
                 More About Me
               </h3>

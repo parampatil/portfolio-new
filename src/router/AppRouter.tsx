@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import ScrollToAnchor from "./ScrollToAnchor";
+
 import { AnimatePresence } from "motion/react";
 import Navbar from "@/components/NavbarComponents/Navbar";
 import HomePage from "@/pages/HomePage";

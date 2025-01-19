@@ -1,5 +1,5 @@
 // components/ProjectCard.tsx
-import { motion, AnimatePresence, useInView, } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import { Project } from "./ProjectTypes";
 import { useState, useRef, useId, useEffect } from "react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
@@ -28,8 +28,19 @@ const ProjectCard = ({ project }: { project: Project }) => {
       }
     };
 
+    const onPopState = (event: PopStateEvent) => {
+      if (isExpanded) {
+        event.preventDefault();
+        setIsExpanded(false);
+      }
+    };
+
+    window.addEventListener("popstate", onPopState);
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [isExpanded]);
 
   return (
@@ -38,7 +49,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         layoutId={`card-${project.id}-${id}`}
-        className="group relative overflow-hidden rounded-2xl bg-zinc-900 dark:bg-zinc-800/50 backdrop-blur-sm"
+        className="group relative overflow-hidden rounded-2xl bg-zinc-900 backdrop-blur-sm dark:bg-zinc-800"
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         ref={closedCardRef}
@@ -46,12 +57,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
         {/* Project Image */}
         <motion.div
           layoutId={`image-container-${project.id}-${id}`}
-          className="relative aspect-[16/9] overflow-hidden cursor-pointer"
+          className="relative aspect-[16/9] cursor-pointer overflow-hidden"
           onClick={() => setIsExpanded(true)}
         >
           <motion.img
             layoutId={`image-${project.id}-${id}`}
-            
             src={project.image}
             alt={project.title}
             className="h-full w-full object-cover"
@@ -59,6 +69,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               scale: isHovered ? 1.1 : 1,
             }}
             transition={{ duration: 0.4 }}
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" />
 
@@ -69,7 +80,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           >
             {project.technologies.slice(0, 3).map((tech) => (
               <motion.span
-              whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.1 }}
                 key={tech}
                 className="rounded-md bg-black/50 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
               >
@@ -78,8 +89,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
             ))}
             {project.technologies.length > 3 && (
               <motion.span
-               whileHover={{ scale: 1.1 }}
-               className="rounded-md bg-black/50 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                whileHover={{ scale: 1.1 }}
+                className="rounded-md bg-black/50 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm"
+              >
                 +{project.technologies.length - 3}
               </motion.span>
             )}
@@ -168,7 +180,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
         {/* Hover Border Effect */}
         <motion.div
-          className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 -z-10"
+          className="absolute inset-0 -z-10 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             background:
               "linear-gradient(45deg, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.2) 100%)",

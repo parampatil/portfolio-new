@@ -6,7 +6,7 @@ import { navItems } from "@/components/NavbarComponents/NavbarMenuItems";
 
 const Footer = () => {
     const ref = useRef(null);
-    const inView = useInView(ref);
+    const inView = useInView(ref, { once: true });
 
     
     // Parent and child animation variants

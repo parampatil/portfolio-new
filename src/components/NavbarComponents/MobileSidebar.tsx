@@ -18,7 +18,7 @@ interface MobileSidebarProps {
     handleSignOut,
   }: MobileSidebarProps) => {
     return (
-      <Sheet modal={false}>
+      <Sheet modal={false} >
         <SheetTrigger>
           <Menu size={24} className="text-black dark:text-white"/>
         </SheetTrigger>

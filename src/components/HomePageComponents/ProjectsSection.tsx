@@ -16,12 +16,16 @@ const ProjectsSection = () => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         <AnimatePresence>
-          {projectsData.filter(p => p.isTopProject).map((project) => (
-            <ProjectCard 
+            {projectsData
+            .filter(p => p.isTopProject)
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .slice(0, 3)
+            .map((project) => (
+              <ProjectCard 
               key={project.id} 
               project={project}
-            />
-          ))}
+              />
+            ))}
         </AnimatePresence>
       </motion.div>
       <Link
