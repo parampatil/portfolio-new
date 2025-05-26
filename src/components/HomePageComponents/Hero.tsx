@@ -11,7 +11,7 @@ const Hero = () => {
 
   return (
     <section
-      className="flex w-full flex-col items-center justify-between overflow-hidden dark:text-white bg-white dark:bg-gray-900 lg:flex-row"
+      className="flex w-full flex-col items-center justify-between overflow-hidden dark:text-white bg-white dark:bg-gray-950 lg:flex-row"
       ref={ref}
     >
       <BackgroundLines className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-10 lg:w-1/2">

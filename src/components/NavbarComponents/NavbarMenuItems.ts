@@ -25,25 +25,25 @@ export const navItems = [
         { name: "Projects", path: "/projects#projects" },
       ],
     },
-    {
-      name: "Blogs",
-      path: "/blogs",
-      dropdown: [{ name: "Cards of Blogs", path: "/blogs#cards" }],
-    },
-    {
-      name: "Hobby",
-      path: "/hobby",
-      dropdown: [
-        { name: "YouTube", path: "/hobby#youtube" },
-        { name: "Photography", path: "/hobby#photography" },
-      ],
-    },
-    {
-      name: "Contact Me",
-      path: "/contact",
-      dropdown: [
-        { name: "Form", path: "/contact#form" },
-        { name: "Social Media", path: "/contact#social-media" },
-      ],
-    },
+    // {
+    //   name: "Blogs",
+    //   path: "/blogs",
+    //   dropdown: [{ name: "Cards of Blogs", path: "/blogs#cards" }],
+    // },
+    // {
+    //   name: "Hobby",
+    //   path: "/hobby",
+    //   dropdown: [
+    //     { name: "YouTube", path: "/hobby#youtube" },
+    //     { name: "Photography", path: "/hobby#photography" },
+    //   ],
+    // },
+    // {
+    //   name: "Contact Me",
+    //   path: "/contact",
+    //   dropdown: [
+    //     { name: "Form", path: "/contact#form" },
+    //     { name: "Social Media", path: "/contact#social-media" },
+    //   ],
+    // },
   ];

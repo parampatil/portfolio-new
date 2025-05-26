@@ -25,17 +25,22 @@ const universities = [
   },
 ];
 
-const projects = [
-  "MapReduce System with Google Cloud Functions",
-  "Patient & Insurance Management System",
-  "COVID Vaccine Slot Booking Software",
+// const projects = [
+//   "MapReduce System with Google Cloud Functions",
+//   "Patient & Insurance Management System",
+//   "COVID Vaccine Slot Booking Software",
+// ];
+
+const experience = [
+  "Software Developer at Indiana University",
+  "Web developer intern at Coinage",
 ];
 
 const AboutSection = () => {
   return (
     <section
       id="about-me"
-      className="relative flex min-h-screen w-full justify-center bg-white from-gray-900 via-black to-gray-800 py-16 dark:bg-gradient-to-b dark:text-white"
+      className="relative flex min-h-screen w-full justify-center bg-white from-gray-950 via-gray-900 to-gray-800 py-16 dark:bg-gradient-to-b dark:text-white"
     >
       <div
         className="absolute bottom-0 left-0 h-40 bg-red-400"
@@ -121,20 +126,24 @@ const AboutSection = () => {
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
             <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-              <h3 className="mb-4 text-xl font-semibold text-pink-400">
-                Projects
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-600 mix-blend-difference">
-                {projects.map((project, idx) => (
-                  <li key={idx}>{project}</li>
-                ))}
-              </ul>
+              <div className="flex flex-col h-full">
+              <div className="grow">
+                <h3 className="mb-4 text-xl font-semibold text-pink-400">
+                  Experience
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-300 mix-blend-difference">
+                  {experience.map((project, idx) => (
+                    <li key={idx}>{project}</li>
+                  ))}
+                </ul>
+              </div>
               <Link
                 to="/#projects"
-                className="mt-4 flex h-fit w-fit flex-1 items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
+                className="mt-4 flex w-fit items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
               >
-                View All Projects
+                See Experience
               </Link>
+              </div>
             </MagicCard>
           </motion.div>
 
