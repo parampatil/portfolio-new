@@ -5,7 +5,6 @@ export const navItems = [
       dropdown: [
         { name: "About", path: "/#about-me" },
         { name: "Projects", path: "/#projects" },
-        { name: "Contact Me", path: "/#contact" },
       ],
     },
     {
@@ -21,7 +20,7 @@ export const navItems = [
       name: "Projects",
       path: "/projects",
       dropdown: [
-        { name: "Research papers", path: "/projects#research-papers" },
+        // { name: "Research papers", path: "/projects#research-papers" },
         { name: "Projects", path: "/projects#projects" },
       ],
     },
@@ -38,12 +37,12 @@ export const navItems = [
     //     { name: "Photography", path: "/hobby#photography" },
     //   ],
     // },
-    // {
-    //   name: "Contact Me",
-    //   path: "/contact",
-    //   dropdown: [
-    //     { name: "Form", path: "/contact#form" },
-    //     { name: "Social Media", path: "/contact#social-media" },
-    //   ],
-    // },
+    {
+      name: "Contact Me",
+      path: "/contact",
+      dropdown: [
+        { name: "Social Media", path: "/contact" },
+        { name: "Schedule Appointment", path: "/contact#appointment" },
+      ],
+    },
   ];

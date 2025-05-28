@@ -3,38 +3,12 @@ import { motion } from "motion/react";
 import { MagicCard } from "@/components/ui/magic-card";
 import AnimatedShinyText from "@/components/ui/animated-shiny-text";
 
-import IULogo from "@/assets/images/Education Icons/IU Logo.png";
-import SPPULogo from "@/assets/images/Education Icons/SPPU Logo.png";
-
 import SkillsCard from "@/components/SkillsCard";
 import SocialMediaDock from "../SocialMediaDock";
 import ButtonThemed from "../ui/ButtonThemed";
 
-// import AboutWave from "@/assets/Images/Backgrounds/AboutWave";
-
-const universities = [
-  {
-    name: "Indiana University Bloomington",
-    logo: IULogo,
-    details: "Master of Science in Computer Science | GPA: 3.7/4",
-  },
-  {
-    name: "Savitribai Phule Pune University",
-    logo: SPPULogo,
-    details: "Bachelor of Engineering in Computer Engineering | GPA: 9.56/10",
-  },
-];
-
-// const projects = [
-//   "MapReduce System with Google Cloud Functions",
-//   "Patient & Insurance Management System",
-//   "COVID Vaccine Slot Booking Software",
-// ];
-
-const experience = [
-  "Software Developer at Indiana University",
-  "Web developer intern at Coinage",
-];
+import ExperienceSection from "./ExperienceSection";
+import EducationSection from "./EducationSection";
 
 const AboutSection = () => {
   return (
@@ -56,17 +30,36 @@ const AboutSection = () => {
         </AnimatedShinyText>
 
         {/* Custom Bento Grid */}
-        <div className="grid grid-cols-6 gap-6">
+        <div className="grid auto-rows-max grid-cols-6 gap-6">
           {/* Professional Overview Card */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="col-span-full md:col-span-full lg:row-span-full"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="col-span-full"
           >
-            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-              Experienced in leading teams and building high-performance web
-              applications.
+            <MagicCard className="flex items-start gap-4 bg-white p-5 shadow-lg transition-shadow duration-300 hover:shadow-2xl dark:bg-neutral-900">
+              {/* Main text */}
+              <div>
+                <h2 className="mb-2 text-lg font-bold text-neutral-900 dark:text-white">
+                  Full Stack Developer & Problem Solver
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200">
+                  I’m a full stack developer specializing in building secure,
+                  scalable, and user-friendly web applications. At{" "}
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">
+                    360 World Inc
+                  </span>
+                  , I rapidly delivered admin dashboards and business sites with
+                  Next.js, Go, and GCP. At{" "}
+                  <span className="font-semibold text-pink-600 dark:text-pink-400">
+                    Indiana University
+                  </span>
+                  , I led machine learning and automation projects. I thrive on
+                  clean code, modern UI/UX, and turning ambitious ideas into
+                  real-world results.
+                </p>
+              </div>
             </MagicCard>
           </motion.div>
 
@@ -89,62 +82,17 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-              <h3 className="mb-4 text-xl font-semibold text-blue-400">
-                Education
-              </h3>
-              <div className="space-y-4">
-                {universities.map((university) => (
-                  <motion.div
-                    key={university.name}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-4"
-                  >
-                    <img
-                      src={university.logo}
-                      alt={university.name}
-                      className="h-12 w-12 object-contain"
-                    />
-                    <div>
-                      <p className="font-medium">{university.name}</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {university.details}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </MagicCard>
+            <EducationSection />
           </motion.div>
 
-          {/* Projects Card */}
+          {/* Experience Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="col-span-6 md:col-span-3 lg:col-span-2"
+            className="col-span-6 h-full md:col-span-3 lg:col-span-2"
           >
-            <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-              <div className="flex flex-col h-full">
-              <div className="grow">
-                <h3 className="mb-4 text-xl font-semibold text-pink-400">
-                  Experience
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-300 mix-blend-difference">
-                  {experience.map((project, idx) => (
-                    <li key={idx}>{project}</li>
-                  ))}
-                </ul>
-              </div>
-              <Link
-                to="/#projects"
-                className="mt-4 flex w-fit items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
-              >
-                See Experience
-              </Link>
-              </div>
-            </MagicCard>
+            <ExperienceSection />
           </motion.div>
 
           {/* Call-to-action Card */}
@@ -163,7 +111,7 @@ const AboutSection = () => {
                 challenging problems. Let’s connect and discuss your ideas.
               </p>
               <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
-                <ButtonThemed to="#/contact">Get in Touch</ButtonThemed>
+                <ButtonThemed to="/contact">Get in Touch</ButtonThemed>
 
                 {/* Social media Icons */}
                 <div className="flex-1">

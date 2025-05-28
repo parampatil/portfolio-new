@@ -58,17 +58,17 @@ const Hero = () => {
       </BackgroundLines>
       {/* Portrait Image */}
       <div
-        className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2 lg:rounded-bl-[30%]"
+        className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2 "
       >
         <img
           src={heroImage}
           alt="Portrait"
           className="h-full w-full object-cover"
-          // style={{
-          //   maskImage: "linear-gradient(to right, transparent, black 50%)",
-          //   WebkitMaskImage:
-          //     "linear-gradient(to right, transparent, black 50%)",
-          // }}
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 50%),",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 50%)",
+          }}
         />
       </div>
       {/* Button to scroll down */}

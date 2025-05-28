@@ -75,7 +75,7 @@ const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto container px-4 md:px-8 lg:px-10 py-5"
+      className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto container px-4 md:px-8 lg:px-10 py-8 scroll-mt-16"
     >
       <motion.div
         initial={{ opacity: 0 }}

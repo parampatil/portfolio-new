@@ -27,7 +27,7 @@ const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   const filteredProjects = getFilteredProjects();
 
   return (
-    <section id="project-cards" className="py-20 px-4 md:px-8">
+    <section id="projects" className="py-20 px-4 md:px-8 scroll-mt-16">
       <div className="flex flex-wrap gap-4 mb-12 justify-center">
         {categories.map((category) => (
           <motion.button

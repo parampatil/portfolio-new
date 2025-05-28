@@ -103,7 +103,7 @@ const HeroSection = () => {
 
           <AnimatedText delay={0.6}>
             <div className="flex gap-4">
-              <Link to="/projects/#project-cards">
+              <Link to="/projects/#projects">
                 <motion.div
                   className="rounded-full bg-blue-600 px-8 py-3 font-medium text-white"
                   whileHover={{ scale: 1.05 }}
