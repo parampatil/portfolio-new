@@ -6,6 +6,7 @@ import Navbar from "@/components/NavbarComponents/Navbar";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import ProjectsPage from "@/pages/ProjectsPage";
+import ContactPage from "@/pages/ContactPage";
 import AdminPage from "@/pages/AdminPage";
 import LoginPage from "@/pages/LoginPage";
 import SignupPage from "@/pages/SignupPage";
@@ -24,6 +25,7 @@ const AppRouter = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route

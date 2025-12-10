@@ -60,7 +60,7 @@ const logoVariants = {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="career-item flex items-center bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md border dark:border-neutral-800"
+      className="career-item flex gap-2 items-center bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md border dark:border-neutral-800"
     >
       <div className="flex-1">
         {/* Title */}

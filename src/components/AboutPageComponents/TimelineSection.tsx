@@ -1,7 +1,7 @@
 import { Timeline } from "@/components/ui/timeline";
 import CareerItem from "@/components/AboutPageComponents/CareerItem";
 import EducationItem from "@/components/AboutPageComponents/EducationItem";
-import BornCard from "@/components/AboutPageComponents/BornCard";
+// import BornCard from "@/components/AboutPageComponents/BornCard";
 
 // Icons
 import IULogo from "@/assets/images/Education Icons/IU Logo.png";
@@ -10,6 +10,7 @@ import SPPULogo from "@/assets/images/Education Icons/SPPU Logo.png";
 import MaharashtraBoardLogo from "@/assets/images/Education Icons/MaharashtraBoard Logo.png";
 import SSRVMLogo from "@/assets/images/Education Icons/SSRVM Logo.png";
 import CoinageLogo from "@/assets/images/Career Icons/Coinage Logo.png";
+import World360Logo from "@/assets/images/Career Icons/360 Logo.ico";
 
 interface TimelineEntry {
   title: string;
@@ -18,6 +19,33 @@ interface TimelineEntry {
 }
 
 const data: TimelineEntry[] = [
+  {
+    title: "2025 February",
+    category: "career",
+    content: (
+      <CareerItem
+        title="Software Developer"
+        company="360 World Inc, Fremont, CA"
+        duration="Feb 2025 - Present"
+        description="
+          Built secure admin dashboards and business websites for 360 World Inc using Next.js, Go, and GCP, implementing VPN, Google OAuth, and role-based access, and rapidly delivering modern, configurable solutions with Docker, Kubernetes, and Tailwind CSS for both internal and external users."
+        technologies={[
+          "Next.js",
+          "Go",
+          "gRPC",
+          "Google Cloud Platform",
+          "Docker",
+          "Kubernetes",
+          "Tailwind CSS",
+          "Framer Motion",
+          "shadcn/ui",
+          "Google OAuth",
+          "VPN",
+        ]}
+        logoUrl={World360Logo}
+      />
+    ),
+  },
   {
     title: "2024 May",
     category: "education",
@@ -139,30 +167,25 @@ const data: TimelineEntry[] = [
         degree="Secondary Education"
         institution="Sri Sri Ravi Shankar Vidya Mandir"
         duration="Aug 2016 - May 2018"
-        courses={[
-          "Science",
-          "Mathematics",
-          "Social Science",
-          "English",
-        ]}
+        courses={["Science", "Mathematics", "Social Science", "English"]}
         logoUrl={SSRVMLogo}
       />
     ),
   },
-  {
-    title: "2000 July",
-    category: "all",
-    content: (
-      <BornCard
-        birthDate={"05 July 2000"}
-        dayOfWeek={"Tuesday"}
-        funFacts={[
-          "My name, Param, was inspired by the PARAM supercomputers, a major milestone in India's tech history.",
-          "The Y2K bug created widespread panic as people feared computers would fail at the start of the new millennium.",
-        ]}
-      />
-    ),
-  },
+  // {
+  //   title: "2000 July",
+  //   category: "all",
+  //   content: (
+  //     <BornCard
+  //       birthDate={"05 July 2000"}
+  //       dayOfWeek={"Tuesday"}
+  //       funFacts={[
+  //         "My name, Param, was inspired by the PARAM supercomputers, a major milestone in India's tech history.",
+  //         "The Y2K bug created widespread panic as people feared computers would fail at the start of the new millennium.",
+  //       ]}
+  //     />
+  //   ),
+  // },
 ];
 
 const TimelineSection = () => {

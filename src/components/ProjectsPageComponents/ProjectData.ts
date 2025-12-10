@@ -7,6 +7,8 @@ import FUSE from "@/assets/images/Projects/FUSE.png";
 import SEProject from "@/assets/images/Projects/SEProject.jpeg";
 import COVID from "@/assets/images/Projects/COVID.png";
 import ADT from "@/assets/images/Projects/ADT.jpeg";
+import World360 from "@/assets/images/Projects/360 World.png";
+import AdminDashboard from "@/assets/images/Projects/Admin Dashboard.png";
 
 import Clock from "@/assets/images/Projects/UI Components/Clock.jpeg";
 import Multiplication from "@/assets/images/Projects/UI Components/Multiplication.jpeg";
@@ -352,5 +354,53 @@ export const projectsData: Project[] = [
     category: "UI Components",
     date: new Date("2020-06-15"),
     isTopProject: false,
+  },
+  {
+    id: "24",
+    title: "360 World Business Website",
+    description:
+      "Modern business website for 360 World Inc, built for performance, rapid iteration, and seamless user experience.",
+    longDescription:
+      "Designed and developed the official business website for 360 World Inc using Next.js and Tailwind CSS. Delivered initial prototypes in just a few days and iterated rapidly to launch a performant, scalable, and visually engaging site. Integrated modern UI/UX, responsive layouts, and robust deployment on Google Cloud Platform with Docker and Kubernetes.",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "Google Cloud Platform",
+      "Docker",
+      "Kubernetes",
+      "shadcn/ui",
+      "Framer Motion",
+    ],
+    image: World360,
+    link: "https://www.360world.com/",
+    category: "Recent",
+    date: new Date("2025-03-01"),
+    isTopProject: true,
+  },
+  {
+    id: "25",
+    title: "360 World Admin Dashboard",
+    description:
+      "Secure admin dashboard for 360 World Inc, enabling teams to monitor stats, configure products, and manage features.",
+    longDescription:
+      "Built a secure internal admin dashboard for 360 World Inc, empowering teams to monitor sales and usage, configure products, control features, and support customers. Implemented VPN, Google OAuth, and role-based access. Led full-stack development and deployment using Next.js, Go, and gRPC on GCP with Docker and Kubernetes. Delivered modern, configurable solutions with rapid prototyping and best-in-class UI using Tailwind CSS and Framer Motion.",
+    technologies: [
+      "Next.js",
+      "Go",
+      "gRPC",
+      "Google Cloud Platform",
+      "Docker",
+      "Kubernetes",
+      "Tailwind CSS",
+      "Framer Motion",
+      "shadcn/ui",
+      "Google OAuth",
+      "VPN",
+    ],
+    image: AdminDashboard,
+    link: "", // Add demo link if available
+    category: "Recent",
+    date: new Date("2025-04-01"),
+    isTopProject: true,
   },
 ];
