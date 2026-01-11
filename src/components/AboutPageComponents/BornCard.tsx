@@ -44,7 +44,7 @@ const BornCard: React.FC<BornCardProps> = ({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="born-card bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg p-6 shadow-lg text-white flex items-center"
+      className="born-card flex items-center rounded-lg bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow p-6 text-white shadow-lg"
     >
       <div className="flex-1">
         {/* Birth date */}
@@ -53,7 +53,7 @@ const BornCard: React.FC<BornCardProps> = ({
         </motion.h3>
 
         {/* Day of the week */}
-        <motion.p className="text-lg font-medium mt-1">
+        <motion.p className="mt-1 text-lg font-medium">
           It was a beautiful {dayOfWeek}.
         </motion.p>
 
@@ -61,7 +61,7 @@ const BornCard: React.FC<BornCardProps> = ({
         {funFacts.length > 0 && (
           <div className="mt-4">
             <h4 className="text-lg font-semibold">Fun Facts:</h4>
-            <ul className="mt-2 list-disc list-inside">
+            <ul className="mt-2 list-inside list-disc">
               {funFacts.map((fact, index) => (
                 <motion.li
                   key={index}
@@ -89,7 +89,11 @@ const BornCard: React.FC<BornCardProps> = ({
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: 1.1 }}
-            transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
+            transition={{
+              duration: 0.6,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
           >
             <Cake size={64} />
           </motion.div>

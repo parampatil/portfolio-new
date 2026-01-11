@@ -75,13 +75,13 @@ const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 mx-auto container px-4 md:px-8 lg:px-10 py-8 scroll-mt-16"
+      className="container mx-auto grid w-full scroll-mt-16 grid-cols-1 gap-12 px-4 py-8 md:grid-cols-2 md:px-8 lg:px-10"
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: cardInView ? 1 : 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="bg-white rounded-lg p-8 shadow-lg"
+        className="rounded-lg bg-white p-8 shadow-lg"
         ref={cardRef}
       >
         {/* Placeholder for any additional content or SkillsCard */}
@@ -92,7 +92,7 @@ const SkillsSection = () => {
         initial="hidden"
         animate={skillsInView ? "visible" : "hidden"}
         variants={containerVariants}
-        className="bg-white rounded-lg p-8 shadow-lg"
+        className="rounded-lg bg-white p-8 shadow-lg"
         ref={skillsRef}
       >
         {skillCategories.map((category) => (
@@ -101,12 +101,12 @@ const SkillsSection = () => {
             variants={itemVariants}
             className="mb-6"
           >
-            <h3 className="text-xl font-bold mb-2">{category.title}</h3>
+            <h3 className="mb-2 text-xl font-bold">{category.title}</h3>
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full text-sm shadow-sm hover:bg-gray-300 transition-colors"
+                  className="rounded-full bg-orange-100 px-4 py-2 text-sm text-aurora-orange shadow-sm transition-colors hover:bg-orange-200 hover:text-aurora-red dark:bg-aurora-orange/20 dark:text-aurora-orange dark:hover:bg-aurora-orange/30"
                 >
                   {skill}
                 </span>

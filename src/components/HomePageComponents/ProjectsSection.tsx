@@ -1,42 +1,82 @@
 // ProjectsGrid.tsx
-import { motion, AnimatePresence } from 'motion/react';
-import ProjectCard from '@/components/ProjectsPageComponents/ProjectCard';
-import { projectsData } from '@/components/ProjectsPageComponents/ProjectData';
+import { motion, AnimatePresence, useInView } from "motion/react";
+import { useRef } from "react";
+import ProjectCard from "@/components/ProjectsPageComponents/ProjectCard";
+import { projectsData } from "@/components/ProjectsPageComponents/ProjectData";
 import AnimatedShinyText from "@/components/ui/animated-shiny-text";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 w-full bg-white dark:bg-gray-800">
-      <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
-        Recent Projects
+    <section
+      id="projects"
+      className="relative z-10 w-full px-4 py-20 md:px-8"
+      ref={ref}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+      >
+        <AnimatedShinyText className="mb-8 text-center text-4xl font-bold text-gray-900 dark:text-white">
+          Recent Projects
         </AnimatedShinyText>
-      <motion.div 
+      </motion.div>
+      <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
       >
         <AnimatePresence>
-            {projectsData
-            .filter(p => p.isTopProject)
-            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          {projectsData
+            .filter((p) => p.isTopProject)
+            .sort(
+              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            )
             .slice(0, 3)
             .map((project) => (
-              <ProjectCard 
-              key={project.id} 
-              project={project}
-              />
+              <motion.div key={project.id} variants={itemVariants}>
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
         </AnimatePresence>
       </motion.div>
-      <Link
-        to="/projects"
-        className="flex justify-center mt-8"
-
-      >
+      <Link to="/projects" className="mt-8 flex justify-center">
         <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-          className="rounded-full bg-blue-600 px-8 py-3 font-medium text-white"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-8 py-3 font-medium text-white shadow-lg transition-shadow hover:shadow-xl dark:from-aurora-orange dark:to-aurora-red"
         >
           View All Projects
         </motion.div>

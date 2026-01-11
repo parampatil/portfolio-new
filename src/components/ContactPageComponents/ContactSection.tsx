@@ -31,15 +31,15 @@ const FloatingBlob = ({
 );
 
 const ContactSection = () => (
-  <section className="relative flex w-full flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-100 px-4 md:px-16 py-20 dark:from-gray-950 dark:via-neutral-950 dark:to-gray-900">
+  <section className="relative flex w-full flex-col items-center justify-center bg-gradient-to-br from-orange-50 via-white to-red-100 px-4 py-20 md:px-16 dark:from-gray-950 dark:via-neutral-950 dark:to-gray-900">
     {/* Animated Blobs */}
     <FloatingBlob
       className="left-[-5rem] top-[-5rem]"
-      color="rgba(59,130,246,0.5)"
+      color="rgba(255,107,53,0.5)"
     />
     <FloatingBlob
       className="bottom-[-7rem] right-[-4rem]"
-      color="rgba(168,85,247,0.5)"
+      color="rgba(247,147,30,0.5)"
     />
 
     <motion.div
@@ -50,7 +50,7 @@ const ContactSection = () => (
     >
       {/* Heading */}
       <div className="text-center">
-        <h1 className="mb-2 text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
+        <h1 className="mb-2 bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:text-white">
           Get in Touch
         </h1>
         <p className="text-neutral-600 dark:text-neutral-300">
@@ -66,7 +66,6 @@ const ContactSection = () => (
 
       {/* Appointment Scheduler */}
       <div id="appointment" className="scroll-mt-16">
-
         <div className="mx-auto w-full overflow-hidden rounded-lg border border-neutral-200 bg-white shadow dark:border-neutral-800">
           {/* The iframe is always on a white background for readability */}
           <iframe

@@ -12,6 +12,7 @@ import {
 
 import MobileSidebar from "./MobileSidebar";
 import { navItems } from "./NavbarMenuItems";
+import AnimatedShinyText from "../ui/animated-shiny-text";
 
 const navbarContainerVariant = {
   hidden: {
@@ -93,7 +94,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-50 w-full px-4 transition-all duration-300 hover:shadow-md hover:backdrop-blur-sm ${backgroundEnabled ? "bg-white/50 shadow-lg backdrop-blur-md dark:bg-slate-900/50" : ""}`}
+      className={`fixed left-0 top-0 z-50 w-full px-4 transition-all duration-500 hover:bg-white/50 hover:shadow-md hover:backdrop-blur-sm dark:hover:bg-black/50 ${backgroundEnabled ? "bg-white/50 shadow-lg backdrop-blur-md dark:bg-black/50" : ""}`}
     >
       <motion.div
         variants={navbarContainerVariant}
@@ -105,10 +106,12 @@ const Navbar = () => {
           variants={navbarItemVariant}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="cursor-pointer bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text py-3 font-berkshire text-2xl text-transparent"
+          className="cursor-pointer py-3 font-berkshire text-2xl"
           onClick={() => navigate("/")}
         >
-          Param Patil
+          <AnimatedShinyText className="text-gray-900 dark:text-white">
+            Param
+          </AnimatedShinyText>
         </motion.div>
         <motion.div variants={navbarItemVariant} className="flex items-stretch">
           <motion.div
@@ -137,8 +140,8 @@ const Navbar = () => {
                         className={({ isActive }) =>
                           `flex flex-1 items-center justify-center px-3 font-semibold transition-all duration-300 group-hover:translate-y-1 ${
                             isActive
-                              ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent"
-                              : "group-hover:text-black/80 dark:text-white"
+                              ? "bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow bg-clip-text text-transparent"
+                              : "text-gray-700 group-hover:text-aurora-orange dark:text-gray-200 dark:group-hover:text-aurora-orange"
                           }`
                         }
                       >
@@ -147,9 +150,10 @@ const Navbar = () => {
                             {isActive && (
                               <motion.div
                                 layoutId="underline"
-                                className="absolute inset-0 h-0 border-t-2 border-red-500"
+                                className="absolute inset-0 h-0 border-t-2 border-aurora-red"
                                 style={{
-                                  boxShadow: "0 0 2em 0.4em rgba(255, 0, 0, 0.5)",
+                                  boxShadow:
+                                    "0 0 2em 0.4em rgba(255, 107, 53, 0.5)",
                                 }}
                               />
                             )}
@@ -158,13 +162,13 @@ const Navbar = () => {
                         )}
                       </NavLink>
                     </HoverCardTrigger>
-                    <HoverCardContent className="border-none bg-white/90 dark:bg-slate-900/90">
+                    <HoverCardContent className="border-none bg-white/50 dark:bg-black/50">
                       <div className="p-2">
                         {item.dropdown.map((subItem) => (
                           <div key={subItem.name} className="py-1">
                             <NavLink
                               to={subItem.path}
-                              className="transition-colors duration-300 hover:text-gray-500"
+                              className="font-medium text-gray-700 transition-colors duration-300 hover:text-aurora-orange dark:text-gray-200 dark:hover:text-aurora-orange"
                             >
                               {subItem.name}
                             </NavLink>
@@ -179,18 +183,19 @@ const Navbar = () => {
 
             {user && !isMobile && (
               <>
-                <motion.div 
-                variants={navbarItemsContainerVariant}
-                initial="hidden"
-                animate="show"
-                className="group relative flex cursor-pointer transition-all duration-300 hover:bg-white/10">
+                <motion.div
+                  variants={navbarItemsContainerVariant}
+                  initial="hidden"
+                  animate="show"
+                  className="group relative flex cursor-pointer transition-all duration-300 hover:bg-white/10"
+                >
                   <NavLink
                     to="/admin"
                     className={({ isActive }) =>
                       `flex flex-1 items-center justify-center px-3 font-semibold transition-all duration-300 group-hover:translate-y-1 ${
                         isActive
-                          ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent"
-                          : "group-hover:text-black/80 dark:text-white"
+                          ? "bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow bg-clip-text text-transparent"
+                          : "text-gray-700 group-hover:text-aurora-orange dark:text-gray-200 dark:group-hover:text-aurora-orange"
                       }`
                     }
                   >
@@ -199,7 +204,7 @@ const Navbar = () => {
                         {isActive && (
                           <motion.div
                             layoutId="underline"
-                            className="absolute inset-0 border-t-2 border-red-500"
+                            className="absolute inset-0 border-t-2 border-aurora-red"
                           />
                         )}
                         Admin
@@ -208,15 +213,16 @@ const Navbar = () => {
                   </NavLink>
                 </motion.div>
                 <motion.div
-                variants={navbarItemsContainerVariant}
-                initial="hidden"
-                animate="show"
-                className="flex cursor-pointer items-center px-3">
+                  variants={navbarItemsContainerVariant}
+                  initial="hidden"
+                  animate="show"
+                  className="flex cursor-pointer items-center px-3"
+                >
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleSignOut}
-                    className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-red-600"
+                    className="rounded-lg bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow px-4 py-2 text-sm font-medium text-white shadow-lg shadow-aurora-orange/30 transition-all duration-300 hover:shadow-aurora-orange/50"
                   >
                     Sign Out
                   </motion.button>

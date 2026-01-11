@@ -34,7 +34,7 @@ const FloatingBlob = ({
   return (
     <motion.div
       className={`${className} blur-3xl`}
-      initial={{ x: "0", y: "0"}}  
+      initial={{ x: "0", y: "0" }}
       animate={{
         x: [0, 1, 0, 0],
         y: [0, 0, 1, 0],
@@ -52,7 +52,6 @@ const FloatingBlob = ({
         backgroundColor: color,
         width: "15rem",
         height: "15rem",
-
       }}
     />
   );
@@ -89,7 +88,7 @@ const HeroSection = () => {
       <div className="container relative z-10 mx-auto px-4 pt-32">
         <motion.div className="mx-auto max-w-4xl" style={{ y }}>
           <AnimatedText delay={0.2}>
-            <h1 className="mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-6xl font-bold text-transparent md:text-7xl">
+            <h1 className="mb-6 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-6xl font-bold text-transparent md:text-7xl dark:from-aurora-orange dark:via-aurora-red dark:to-aurora-glow">
               Crafting Digital Experiences
             </h1>
           </AnimatedText>
@@ -105,7 +104,7 @@ const HeroSection = () => {
             <div className="flex gap-4">
               <Link to="/projects/#projects">
                 <motion.div
-                  className="rounded-full bg-blue-600 px-8 py-3 font-medium text-white"
+                  className="rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-8 py-3 font-medium text-white shadow-lg dark:from-aurora-orange dark:to-aurora-red"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -114,8 +113,8 @@ const HeroSection = () => {
               </Link>
               <Link to="/contact">
                 <motion.div
-                  className="rounded-full border border-gray-600 px-8 py-3 font-medium dark:text-white"
-                  whileHover={{ scale: 1.05, borderColor: "#4F46E5" }}
+                  className="rounded-full border-2 border-orange-500 px-8 py-3 font-medium text-gray-900 dark:border-aurora-orange dark:text-white"
+                  whileHover={{ scale: 1.05, borderColor: "#F7931E" }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Contact Me
@@ -127,11 +126,11 @@ const HeroSection = () => {
 
         {/* Floating Elements */}
         <FloatingBlob
-          color="rgba(59, 130, 246, 0.5)"
+          color="rgba(255, 107, 53, 0.5)"
           className="absolute right-10 top-40"
         />
         <FloatingBlob
-          color="rgba(168, 85, 247, 0.5)"
+          color="rgba(247, 147, 30, 0.5)"
           className="absolute bottom-40 left-10"
         />
       </div>
