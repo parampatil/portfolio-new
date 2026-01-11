@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import {  motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 interface CareerItemProps {
   title: string;
@@ -40,19 +40,22 @@ const CareerItem: React.FC<CareerItemProps> = ({
   };
 
   const ListVarient = {
-    hidden: { opacity: 0, },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 1} },
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 1 },
+    },
   };
 
   const ListItemVarient = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0 },
-  }
+  };
 
-const logoVariants = {
+  const logoVariants = {
     hidden: { opacity: 0, scale: 0.5, x: 50 },
     visible: { opacity: 1, scale: 1, x: 0, transition: { delay: 0.5 } },
-};
+  };
 
   return (
     <motion.div
@@ -60,7 +63,7 @@ const logoVariants = {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="career-item flex gap-2 items-center bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md border dark:border-neutral-800"
+      className="career-item flex items-center gap-2 rounded-lg border bg-white p-6 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
     >
       <div className="flex-1">
         {/* Title */}
@@ -97,9 +100,7 @@ const logoVariants = {
 
         {/* Technologies */}
         {technologies && technologies.length > 0 && (
-          <motion.div
-            variants={childVariants}
-          >
+          <motion.div variants={childVariants}>
             <h4 className="mt-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200">
               Technologies:
             </h4>
@@ -113,7 +114,7 @@ const logoVariants = {
                 <motion.li
                   key={index}
                   variants={ListItemVarient}
-                  className="px-2 py-1 text-xs bg-neutral-200 dark:bg-white/80 rounded-md"
+                  className="rounded-md bg-orange-100 px-2 py-1 text-xs text-aurora-orange dark:bg-aurora-orange/20 dark:text-aurora-orange"
                 >
                   {tech}
                 </motion.li>
@@ -132,7 +133,7 @@ const logoVariants = {
           whileHover={{ scale: 1.25 }}
           src={logoUrl}
           alt={`${company} logo`}
-          className="h-16 rounded-md shadow-md "
+          className="aspect-square h-16 w-16 rounded-md object-contain"
         />
       )}
     </motion.div>

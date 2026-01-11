@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 import { MagicCard } from "@/components/ui/magic-card";
 import AnimatedShinyText from "@/components/ui/animated-shiny-text";
 
@@ -11,33 +11,95 @@ import ExperienceSection from "./ExperienceSection";
 import EducationSection from "./EducationSection";
 
 const AboutSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 2,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 2.0,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 2.0,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.85 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 2.0,
+        ease: [0.34, 1.56, 0.64, 1],
+      },
+    },
+  };
+
   return (
     <section
       id="about-me"
-      className="relative flex min-h-screen w-full justify-center bg-white from-gray-950 via-gray-900 to-gray-800 py-16 dark:bg-gradient-to-b dark:text-white"
+      className="relative flex min-h-screen w-full justify-center dark:text-white"
+      ref={ref}
     >
-      <div
-        className="absolute bottom-0 left-0 h-40 bg-red-400"
-        style={{
-          clipPath: "ellipse(50% 100% at 50% 100%)",
-        }}
-      />
-
-      <div className="container p-2 md:p-0">
+      <div className="container p-2">
         {/* Section Title */}
-        <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
-          About Me
-        </AnimatedShinyText>
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+          transition={{ duration: 1.5, ease: [0.25, 0.4, 0.25, 1] }}
+        >
+          <AnimatedShinyText className="mb-8 text-center text-4xl font-bold">
+            About Me
+          </AnimatedShinyText>
+        </motion.div>
 
         {/* Custom Bento Grid */}
-        <div className="grid auto-rows-max grid-cols-6 gap-6">
+        <motion.div
+          className="grid auto-rows-max grid-cols-6 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {/* Professional Overview Card */}
-          <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="col-span-full"
-          >
+          <motion.div variants={itemVariants} className="col-span-full">
             <MagicCard className="flex items-start gap-4 bg-white p-5 shadow-lg transition-shadow duration-300 hover:shadow-2xl dark:bg-neutral-900">
               {/* Main text */}
               <div>
@@ -65,9 +127,7 @@ const AboutSection = () => {
 
           {/* Skills Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={scaleIn}
             className="col-span-6 row-span-2 md:col-span-3 lg:col-span-2"
           >
             <MagicCard className="flex size-full flex-col items-center justify-center p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
@@ -77,9 +137,7 @@ const AboutSection = () => {
 
           {/* Education Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={slideInLeft}
             className="col-span-6 md:col-span-3 lg:col-span-2"
           >
             <EducationSection />
@@ -87,9 +145,7 @@ const AboutSection = () => {
 
           {/* Experience Card */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={slideInRight}
             className="col-span-6 h-full md:col-span-3 lg:col-span-2"
           >
             <ExperienceSection />
@@ -97,13 +153,11 @@ const AboutSection = () => {
 
           {/* Call-to-action Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={scaleIn}
             className="col-span-6 md:col-span-3 lg:col-span-4 xl:col-span-3"
           >
             <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-              <h3 className="mb-4 text-xl font-semibold text-yellow-400">
+              <h3 className="mb-4 text-xl font-semibold text-aurora-orange">
                 Let’s Collaborate!
               </h3>
               <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
@@ -123,9 +177,7 @@ const AboutSection = () => {
 
           {/* Learn more about me Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={itemVariants}
             className="col-span-6 md:col-span-3 lg:col-span-6 xl:col-span-1"
           >
             <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
@@ -135,15 +187,10 @@ const AboutSection = () => {
               <p className="mb-4 text-sm text-gray-600 dark:text-gray-300">
                 Get to know more about me and my journey.
               </p>
-              <Link
-                to="/about"
-                className="mt-4 flex h-fit w-fit items-center rounded-lg bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 px-6 py-2 text-center font-medium transition-transform duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:text-white"
-              >
-                Learn More
-              </Link>
+              <ButtonThemed to="/about">Learn More</ButtonThemed>
             </MagicCard>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Background Wave */}

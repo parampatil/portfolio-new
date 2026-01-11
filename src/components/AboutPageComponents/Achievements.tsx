@@ -29,7 +29,8 @@ const achievements: Achievement[] = [
     videos: [
       {
         url: "https://www.youtube.com/embed/enuf0H3dLIU",
-        description: "This video demonstrates the creative scene animation created in Unity.",
+        description:
+          "This video demonstrates the creative scene animation created in Unity.",
       },
       {
         url: "https://www.youtube.com/embed/--Fj6DdTb58",
@@ -60,7 +61,11 @@ const Achievements: React.FC = () => {
   };
 
   return (
-    <section ref={ref} id="achievements" className="p-5 lg:p-10 2xl:p-20 w-full">
+    <section
+      ref={ref}
+      id="achievements"
+      className="w-full p-5 lg:p-10 2xl:p-20"
+    >
       {/* Achievements Section */}
       <motion.div
         initial="hidden"
@@ -68,12 +73,14 @@ const Achievements: React.FC = () => {
         variants={containerVariants}
         className="space-y-6"
       >
-        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Achievements</h2>
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
+          Achievements
+        </h2>
         {achievements.map((achievement, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
-            className="flex flex-col bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md border dark:border-neutral-800"
+            className="flex flex-col rounded-lg border bg-white p-6 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
           >
             <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
               {achievement.title}
@@ -90,7 +97,7 @@ const Achievements: React.FC = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-500 hover:underline"
+                      className="text-aurora-orange transition-colors hover:text-aurora-red hover:underline"
                     >
                       {link.label}
                     </a>
@@ -101,18 +108,20 @@ const Achievements: React.FC = () => {
             {/* Render Videos */}
             {achievement.videos && (
               <div className="mt-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                   {achievement.videos.map((video, videoIndex) => (
                     <div key={videoIndex} className="flex flex-col space-y-2">
                       <iframe
                         src={video.url}
                         title={`Video ${videoIndex + 1}`}
-                        className="w-full h-64 xl:h-72 2xl:h-96 rounded-lg shadow--xl"
+                        className="shadow--xl h-64 w-full rounded-lg xl:h-72 2xl:h-96"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
                         allowFullScreen
                       ></iframe>
-                      <p className="text-neutral-700 dark:text-neutral-300">{video.description}</p>
+                      <p className="text-neutral-700 dark:text-neutral-300">
+                        {video.description}
+                      </p>
                     </div>
                   ))}
                 </div>

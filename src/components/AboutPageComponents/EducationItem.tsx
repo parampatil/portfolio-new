@@ -9,7 +9,7 @@ interface EducationItemProps {
   duration: string;
   grade?: string;
   courses?: string[]; // Optional courses
-  logoUrl?: string;  // Optional logo
+  logoUrl?: string; // Optional logo
 }
 
 const EducationItem: React.FC<EducationItemProps> = ({
@@ -55,7 +55,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
   const logoVariants = {
     hidden: { opacity: 0, scale: 0.5, x: 50 },
     visible: { opacity: 1, scale: 1, x: 0, transition: { delay: 0.5 } },
-};
+  };
 
   return (
     <motion.div
@@ -63,7 +63,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="education-item flex items-center bg-white dark:bg-neutral-900 rounded-lg p-6 shadow-md border dark:border-neutral-800"
+      className="education-item flex items-center rounded-lg border bg-white p-6 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
     >
       <div className="flex-1">
         {/* Degree */}
@@ -91,18 +91,18 @@ const EducationItem: React.FC<EducationItemProps> = ({
         </motion.p>
 
         {/* Grade */}
-        {grade && (<motion.p
-          variants={childVariants}
-          className="mt-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200"
-        >
-          Grade: {grade}
-        </motion.p>)}
+        {grade && (
+          <motion.p
+            variants={childVariants}
+            className="mt-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200"
+          >
+            Grade: {grade}
+          </motion.p>
+        )}
 
         {/* Courses */}
         {courses && courses.length > 0 && (
-          <motion.div
-            variants={childVariants}
-          >
+          <motion.div variants={childVariants}>
             <h4 className="mt-2 text-sm font-semibold text-neutral-800 dark:text-neutral-200">
               Courses:
             </h4>
@@ -116,7 +116,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
                 <motion.li
                   key={index}
                   variants={ListItemVarient}
-                  className="px-2 py-1 text-xs bg-neutral-200 dark:bg-white/80 rounded-md"
+                  className="rounded-md bg-orange-100 px-2 py-1 text-xs text-aurora-orange dark:bg-aurora-orange/20 dark:text-aurora-orange"
                 >
                   {course}
                 </motion.li>
@@ -135,7 +135,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
           whileHover={{ scale: 1.25 }}
           src={logoUrl}
           alt={`${institution} logo`}
-          className="h-16 rounded-md shadow-md"
+          className="aspect-square h-16 w-16 rounded-md object-contain"
         />
       )}
     </motion.div>

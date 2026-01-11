@@ -15,6 +15,12 @@ export default {
         "color-3": "hsl(var(--color-3))",
         "color-4": "hsl(var(--color-4))",
         "color-5": "hsl(var(--color-5))",
+        aurora: {
+          orange: "#FF6B35",
+          red: "#F7931E",
+          primary: "#FF5722",
+          glow: "#FF8C42",
+        },
       },
       fontFamily: {
         berkshire: ["Berkshire Swash", "serif"],

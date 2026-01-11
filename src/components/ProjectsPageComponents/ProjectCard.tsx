@@ -16,12 +16,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
   useOutsideClick(cardRef, () => setIsExpanded(false));
 
   useEffect(() => {
-    if (isExpanded) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsExpanded(false);
@@ -49,7 +43,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         layoutId={`card-${project.id}-${id}`}
-        className="group relative overflow-hidden rounded-2xl bg-zinc-900 backdrop-blur-sm dark:bg-zinc-800"
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg backdrop-blur-sm dark:bg-zinc-900 dark:shadow-none"
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         ref={closedCardRef}
@@ -71,7 +65,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             transition={{ duration: 0.4 }}
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-zinc-900" />
 
           {/* Tech Stack Preview */}
           <motion.div
@@ -101,18 +95,18 @@ const ProjectCard = ({ project }: { project: Project }) => {
         {/* Content */}
         <motion.div
           layoutId={`content-${project.id}-${id}`}
-          className="space-y-4 p-6"
+          className="flex flex-1 flex-col space-y-4 p-6"
         >
           <motion.div>
             <motion.h3
               layoutId={`title-${project.id}-${id}`}
-              className="mb-2 text-xl font-bold text-white"
+              className="mb-2 text-xl font-bold text-gray-900 dark:text-white"
             >
               {project.title}
             </motion.h3>
             <motion.p
               layoutId={`description-${project.id}-${id}`}
-              className="line-clamp-2 text-sm text-zinc-400"
+              className="line-clamp-2 text-sm text-gray-600 dark:text-zinc-400"
             >
               {project.description}
             </motion.p>
@@ -120,7 +114,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
           {/* Links */}
           <motion.div
-            className="flex gap-4 pt-2"
+            className="mt-auto flex gap-4 pt-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{
               opacity: isHovered ? 1 : 0,
@@ -133,7 +127,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300"
+                className="flex items-center gap-2 text-sm font-medium text-orange-500 hover:text-orange-600 dark:text-aurora-orange dark:hover:text-aurora-red"
                 whileHover={{ x: 4 }}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -158,7 +152,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-zinc-300"
+                className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-zinc-400 dark:hover:text-zinc-300"
                 whileHover={{ x: 4 }}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -183,7 +177,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           className="absolute inset-0 -z-10 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             background:
-              "linear-gradient(45deg, rgba(59,130,246,0.2) 0%, rgba(147,51,234,0.2) 100%)",
+              "linear-gradient(45deg, rgba(255,107,53,0.3) 0%, rgba(247,147,30,0.3) 50%, rgba(255,87,34,0.3) 100%)",
             filter: "blur(20px)",
           }}
         />
@@ -203,7 +197,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               <motion.div
                 layoutId={`card-${project.id}-${id}`}
                 ref={cardRef}
-                className="w-full max-w-[500px] overflow-hidden rounded-2xl bg-zinc-800"
+                className="w-full max-w-[500px] overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-zinc-800"
               >
                 <motion.div layoutId={`image-container-${project.id}-${id}`}>
                   <motion.img
@@ -220,27 +214,27 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 >
                   <motion.h3
                     layoutId={`title-${project.id}-${id}`}
-                    className="mb-4 text-2xl font-bold text-white"
+                    className="mb-4 text-2xl font-bold text-gray-900 dark:text-white"
                   >
                     {project.title}
                   </motion.h3>
                   <motion.p
                     layoutId={`description-${project.id}-${id}`}
-                    className="mb-6 text-gray-300"
+                    className="mb-6 text-gray-700 dark:text-gray-300"
                   >
                     {project.longDescription || project.description}
                   </motion.p>
 
                   <motion.div layout className="space-y-6">
                     <div>
-                      <h4 className="mb-3 text-lg font-semibold text-white">
+                      <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
                         Technologies
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-full bg-blue-500/20 px-3 py-1 text-blue-300"
+                            className="rounded-full bg-orange-100 px-3 py-1 text-orange-600 dark:bg-aurora-orange/20 dark:text-aurora-orange"
                           >
                             {tech}
                           </span>
@@ -255,7 +249,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 text-center font-medium text-white transition-colors hover:bg-blue-700"
+                            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 py-3 text-center font-medium text-white transition-colors hover:from-orange-600 hover:to-red-700 dark:from-aurora-orange dark:to-aurora-red"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={(e) => e.stopPropagation()}
@@ -281,7 +275,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-zinc-700 py-3 text-center font-medium text-white transition-colors hover:bg-zinc-600"
+                            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gray-200 py-3 text-center font-medium text-gray-900 transition-colors hover:bg-gray-300 dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-600"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={(e) => e.stopPropagation()}

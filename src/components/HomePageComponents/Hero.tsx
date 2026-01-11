@@ -1,105 +1,176 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import heroImage from "@/assets/Images/Hero.jpg";
 
-import { BackgroundLines } from "@/components/ui/background-lines";
+// Import WebGL background components
+import Aurora from "@/components/Aurora";
+import GhostCursor from "@/components/GhostCursor";
 
 const Hero = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
 
   return (
-    <section
-      className="flex w-full flex-col items-center justify-between overflow-hidden dark:text-white bg-white dark:bg-gray-950 lg:flex-row"
-      ref={ref}
-    >
-      <BackgroundLines className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-10 lg:w-1/2">
-        {/* Name and Title Section */}
-        <motion.div
-          initial={{ y: -50 }}
-          animate={isInView ? { y: 0 } : { y: -50 }}
-          exit={{ y: -50 }}
-          transition={{ duration: 1 }}
-          className="text-left"
-        >
-          <div className="space-y-2">
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ type: "spring", stiffness: 100 }}
-              className="w-fit text-4xl"
-            >
-              Hi, my name is
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
-              className="w-fit bg-gradient-to-r from-purple-500 via-pink-600 to-red-500 bg-clip-text font-berkshire text-8xl text-transparent"
-            >
-              Param Patil
-            </motion.h1>
-          </div>
-          <p className="mt-4 text-lg dark:text-gray-300 md:text-xl">
-          your friendly neighborhood coder who excels at React-ing to challenges, debugging life’s errors, and building Next-level solutions
-          </p> 
-          <div className="mt-4 flex flex-col items-center space-x-1 md:flex-row">
-            <span className="mr-2 inline-block animate-pulse text-nowrap rounded-full bg-blue-500 px-3 py-1 text-sm font-semibold text-white">
-              My 2025 Goal
-            </span>
-            <p className="text-lg dark:text-gray-400 md:text-xl">
-              Seeking full-time opportunities as Software Development Engineer
-            </p>
-          </div>
-        </motion.div>
-      </BackgroundLines>
-      {/* Portrait Image */}
-      <div
-        className="flex h-full max-h-screen w-full items-center justify-center overflow-hidden lg:w-1/2 "
+    <>
+      <GhostCursor
+        color="#FF6B35"
+        zIndex={0}
+        bloomRadius={0.01}
+        brightness={0.5}
+        trailLength={15}
+        edgeIntensity={1}
+        maxDevicePixelRatio={0.2}
+      />
+
+      <section
+        className="relative flex min-h-screen w-screen items-center justify-center overflow-hidden"
+        ref={ref}
       >
-        <img
-          src={heroImage}
-          alt="Portrait"
-          className="h-full w-full object-cover"
-          style={{
-            maskImage: "linear-gradient(to right, transparent, black 50%),",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 50%)",
-          }}
-        />
-      </div>
-      {/* Button to scroll down */}
-      <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 5 }}
-        >
-          <Link
-            to="/#about-me"
-            className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-90"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 animate-bounce text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        {/* Aurora Background */}
+        <div className="absolute inset-0 left-0 right-0 z-0 h-full w-full">
+          <Aurora
+            colorStops={["#FF6B35", "#F7931E", "#FF5722"]}
+            amplitude={1}
+            blend={0.6}
+            speed={0.5}
+          />
+        </div>
+
+        {/* Main Content Container */}
+        <div className="container relative z-10 mx-auto px-4 py-12 sm:px-6 sm:py-20">
+          <div className="flex flex-col items-center justify-center space-y-8 text-center">
+            {/* Greeting */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex items-center gap-3"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </Link>
-        </motion.div>
-      </div>
-    </section>
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-gray-600 dark:to-gray-600" />
+              <p className="text-sm font-medium uppercase tracking-widest text-gray-600 dark:text-gray-400">
+                Welcome
+              </p>
+              <div className="h-px w-8 bg-gradient-to-l from-transparent to-gray-600 dark:to-gray-600" />
+            </motion.div>
+
+            {/* Name */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4"
+            >
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white">
+                <span className="block font-light text-gray-600 dark:text-gray-400">
+                  Hi, I'm
+                </span>
+                <span className="relative mt-2 block">
+                  <span className="bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow bg-clip-text text-transparent">
+                    Param Patil
+                  </span>
+                  {/* Glow effect */}
+                  <span
+                    className="absolute inset-0 -z-10 bg-gradient-to-r from-aurora-orange/30 via-aurora-red/30 to-aurora-glow/30 blur-2xl"
+                    style={{ transform: "translateY(10px)" }}
+                  />
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Role/Title */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-4"
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-aurora-orange/30 bg-gray-900/50 px-4 py-2 backdrop-blur-sm sm:px-6 sm:py-3">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aurora-orange opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-aurora-red" />
+                </span>
+                <span className="text-xs font-medium text-gray-300 sm:text-sm">
+                  Software Development Engineer
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="max-w-2xl px-4 text-base leading-relaxed text-gray-700 sm:px-0 sm:text-lg md:text-xl dark:text-gray-400"
+            >
+              A passionate developer who excels at{" "}
+              <span className="font-semibold text-orange-600 dark:text-aurora-orange">
+                React-ing
+              </span>{" "}
+              to challenges,{" "}
+              <span className="font-semibold text-red-600 dark:text-aurora-red">
+                debugging
+              </span>{" "}
+              complex problems, and building{" "}
+              <span className="font-semibold text-orange-500 dark:text-aurora-glow">
+                Next-level
+              </span>{" "}
+              solutions
+            </motion.p>
+
+            {/* CTA Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={
+                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+              }
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="pb-16 pt-2 sm:pb-4 sm:pt-4"
+            >
+              <div className="inline-flex flex-col items-center gap-2 rounded-full border border-aurora-orange/20 bg-gradient-to-r from-aurora-orange/10 via-aurora-red/10 to-aurora-glow/10 px-4 py-2 backdrop-blur-sm sm:flex-row sm:gap-3 sm:px-6 sm:py-3">
+                <span className="text-xs font-semibold text-aurora-red sm:text-sm">
+                  🎯 2026 Goal
+                </span>
+                <span className="hidden h-4 w-px bg-gray-700 sm:block" />
+                <span className="text-xs text-gray-400 sm:text-sm">
+                  Seeking Full-Time Opportunities
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-0"
+            >
+              <Link
+                to="/#about-me"
+                className="group flex flex-col items-center gap-2 transition-all duration-300 hover:scale-105"
+              >
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-600 dark:text-gray-500">
+                  Scroll
+                </span>
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-gray-400 p-1 transition-colors group-hover:border-orange-500 dark:border-gray-700 dark:group-hover:border-aurora-orange"
+                >
+                  <motion.div className="h-1.5 w-1.5 rounded-full bg-gray-600 transition-colors group-hover:bg-red-600 dark:bg-gray-500 dark:group-hover:bg-aurora-red" />
+                </motion.div>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Decorative grid overlay */}
+        {/* <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" /> */}
+      </section>
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ export const Timeline = ({
 }) => {
   const [filter, setFilter] = useState<"education" | "career" | "all">("all");
   const filteredData = data.filter(
-    (item) => filter === "all" || item.category === filter
+    (item) => filter === "all" || item.category === filter,
   );
 
   const ref = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ export const Timeline = ({
         initial={{ opacity: 0, y: 50 }}
         animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 1 }}
-        className="mx-auto max-w-7xl px-4 pt-16 2xl:pt-20 md:px-8 lg:px-10"
+        className="mx-auto max-w-7xl px-4 pt-16 md:px-8 lg:px-10 2xl:pt-20"
       >
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
@@ -75,17 +75,21 @@ export const Timeline = ({
         </motion.p>
         <div className="mt-8 flex space-x-4">
           {["all", "education", "career"].map((cat) => (
-            <button
+            <motion.button
               key={cat}
+              layout
               onClick={() => setFilter(cat as "education" | "career" | "all")}
-              className={`px-4 py-2 rounded-full text-sm font-semibold ${
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition-all duration-500 ${
                 filter === cat
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-black dark:bg-neutral-800 dark:text-white"
+                  ? "bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow text-white shadow-lg shadow-aurora-orange/50"
+                  : "bg-gray-200 text-black hover:bg-orange-100 hover:text-aurora-orange dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
+            </motion.button>
           ))}
         </div>
       </motion.div>
@@ -105,7 +109,7 @@ export const Timeline = ({
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-t from-purple-500 from-[0%] via-blue-500 via-[10%] to-transparent"
+            className="absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-t from-aurora-glow from-[0%] via-aurora-orange via-[10%] to-transparent"
           />
         </div>
       </div>
@@ -135,7 +139,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ item, index }) => {
         <motion.h3
           initial={{ opacity: 0, x: -50 }}
           animate={itemInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-          transition={{ type: "spring", stiffness: 80, damping: 10, delay: 0.2 }}
+          transition={{
+            type: "spring",
+            stiffness: 80,
+            damping: 10,
+            delay: 0.2,
+          }}
           className="hidden text-xl font-bold text-neutral-500 md:block md:pl-20 md:text-5xl dark:text-neutral-500"
         >
           {item.title}
