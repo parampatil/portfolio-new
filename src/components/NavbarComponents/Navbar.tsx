@@ -94,7 +94,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-50 w-full px-4 transition-all duration-500 hover:shadow-md hover:backdrop-blur-sm hover:bg-white/50 dark:hover:bg-black/50 ${backgroundEnabled ? "bg-white/50 shadow-lg backdrop-blur-md dark:bg-black/50" : ""}`}
+      className={`fixed left-0 top-0 z-50 w-full px-4 transition-all duration-500 hover:bg-white/50 hover:shadow-md hover:backdrop-blur-sm dark:hover:bg-black/50 ${backgroundEnabled ? "bg-white/50 shadow-lg backdrop-blur-md dark:bg-black/50" : ""}`}
     >
       <motion.div
         variants={navbarContainerVariant}
@@ -106,11 +106,11 @@ const Navbar = () => {
           variants={navbarItemVariant}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="cursor-pointer py-3 font-berkshire text-2xl "
+          className="cursor-pointer py-3 font-berkshire text-2xl"
           onClick={() => navigate("/")}
         >
           <AnimatedShinyText className="text-gray-900 dark:text-white">
-          Param
+            Param
           </AnimatedShinyText>
         </motion.div>
         <motion.div variants={navbarItemVariant} className="flex items-stretch">
@@ -141,7 +141,7 @@ const Navbar = () => {
                           `flex flex-1 items-center justify-center px-3 font-semibold transition-all duration-300 group-hover:translate-y-1 ${
                             isActive
                               ? "bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow bg-clip-text text-transparent"
-                              : "group-hover:text-white/80 dark:group-hover:text-black/80 dark:text-white"
+                              : "text-gray-700 group-hover:text-aurora-orange dark:text-gray-200 dark:group-hover:text-aurora-orange"
                           }`
                         }
                       >
@@ -168,7 +168,7 @@ const Navbar = () => {
                           <div key={subItem.name} className="py-1">
                             <NavLink
                               to={subItem.path}
-                              className="transition-colors duration-300 hover:text-gray-500"
+                              className="font-medium text-gray-700 transition-colors duration-300 hover:text-aurora-orange dark:text-gray-200 dark:hover:text-aurora-orange"
                             >
                               {subItem.name}
                             </NavLink>
@@ -195,7 +195,7 @@ const Navbar = () => {
                       `flex flex-1 items-center justify-center px-3 font-semibold transition-all duration-300 group-hover:translate-y-1 ${
                         isActive
                           ? "bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow bg-clip-text text-transparent"
-                          : "group-hover:text-black/80 dark:text-white"
+                          : "text-gray-700 group-hover:text-aurora-orange dark:text-gray-200 dark:group-hover:text-aurora-orange"
                       }`
                     }
                   >
@@ -222,7 +222,7 @@ const Navbar = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleSignOut}
-                    className="rounded-lg bg-red-500 px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-red-600"
+                    className="rounded-lg bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow px-4 py-2 text-sm font-medium text-white shadow-lg shadow-aurora-orange/30 transition-all duration-300 hover:shadow-aurora-orange/50"
                   >
                     Sign Out
                   </motion.button>

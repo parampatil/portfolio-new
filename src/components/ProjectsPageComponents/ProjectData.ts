@@ -9,6 +9,7 @@ import COVID from "@/assets/images/Projects/COVID.png";
 import ADT from "@/assets/images/Projects/ADT.jpeg";
 import World360 from "@/assets/images/Projects/360 World.png";
 import AdminDashboard from "@/assets/images/Projects/Admin Dashboard.png";
+import World360WebApp from "@/assets/images/Projects/360 World Web App.jpeg";
 
 import Clock from "@/assets/images/Projects/UI Components/Clock.jpeg";
 import Multiplication from "@/assets/images/Projects/UI Components/Multiplication.jpeg";
@@ -401,6 +402,28 @@ export const projectsData: Project[] = [
     link: "", // Add demo link if available
     category: "Recent",
     date: new Date("2025-04-01"),
+    isTopProject: true,
+  },
+  {
+    id: "26",
+    title: "360 World Web App",
+    description:
+      "Comprehensive web application for 360 World Inc, featuring user-friendly interfaces and seamless integration with backend services.",
+    longDescription:
+      "Developed a full-featured web application for 360 World Inc using Next.js and Tailwind CSS. Focused on delivering an intuitive user experience with responsive design and efficient performance. Integrated with backend APIs and implemented secure authentication mechanisms. Utilized modern development practices and tools to ensure scalability and maintainability.",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "API Integration",
+      "Authentication",
+      "Responsive Design",
+      "Framer Motion",
+      "shadcn/ui",
+    ],
+    image: World360WebApp,
+    link: "https://web.360world.com/",
+    category: "Recent",
+    date: new Date("2025-05-01"),
     isTopProject: true,
   },
 ];
