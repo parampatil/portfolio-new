@@ -3,7 +3,6 @@ import { motion, AnimatePresence, useInView } from "motion/react";
 import { useRef } from "react";
 import ProjectCard from "@/components/ProjectsPageComponents/ProjectCard";
 import { projectsData } from "@/components/ProjectsPageComponents/ProjectData";
-import AnimatedShinyText from "@/components/ui/animated-shiny-text";
 import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
@@ -36,17 +35,33 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="relative z-10 w-full px-4 py-20 md:px-8"
+      className="relative z-10 w-full px-4 py-16 md:px-8 container"
       ref={ref}
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ duration: 0.8 }}
+        className="mb-8 flex w-full items-center justify-between"
       >
-        <AnimatedShinyText className="mb-8 text-center text-4xl font-bold text-gray-900 dark:text-white">
-          Recent Projects
-        </AnimatedShinyText>
+        <div>
+          <h2 className="text-4xl font-bold text-aurora-orange">Projects</h2>
+          <p className="mt-1 text-gray-600 dark:text-gray-300">Check out my latest work.</p>
+        </div>
+        <Link
+          to="/projects"
+          className="flex items-center gap-1.5 text-sm font-semibold text-aurora-orange transition-opacity hover:opacity-70"
+        >
+          View All
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </Link>
       </motion.div>
       <motion.div
         layout

@@ -2,6 +2,7 @@ import PageTransition from "@/components/PageTransitions/PageTransition";
 import Hero from "@/components/HomePageComponents/Hero";
 import ProjectsSection from "@/components/HomePageComponents/ProjectsSection";
 import AboutSection from "@/components/HomePageComponents/AboutSection";
+import BlogsSection from "@/components/HomePageComponents/BlogsSection";
 
 const HomePage = () => {
   return (
@@ -9,6 +10,7 @@ const HomePage = () => {
       <Hero />
       <AboutSection />
       <ProjectsSection />
+      <BlogsSection />
       {/* <ContactSection /> */}
     </PageTransition>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (
-    <PageTransition className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
+    <PageTransition className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-aurora-orange via-aurora-red to-aurora-glow text-white">
       {/* Animated 404 Text */}
       <motion.h1
         initial={{ scale: 0.5, opacity: 0 }}
@@ -37,7 +37,7 @@ const NotFoundPage = () => {
         }}
         className="mt-6 text-6xl"
       >
-        🚀
+        🔶
       </motion.div>
 
       {/* Back to Home Button */}
@@ -48,7 +48,7 @@ const NotFoundPage = () => {
         className="mt-8"
       >
         <Link to="/">
-          <button className="rounded-lg bg-white px-6 py-3 font-bold text-blue-500 shadow-lg transition duration-300 hover:bg-gray-100">
+          <button className="rounded-lg bg-white px-6 py-3 font-bold text-aurora-orange shadow-lg transition duration-300 hover:bg-gray-100">
             Take Me Home
           </button>
         </Link>
