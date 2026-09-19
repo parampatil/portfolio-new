@@ -90,7 +90,7 @@ const Hero = () => {
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-aurora-red" />
                 </span>
                 <span className="text-xs font-medium text-gray-300 sm:text-sm">
-                  Software Development Engineer
+                  Full Stack Software Engineer
                 </span>
               </div>
             </motion.div>
@@ -118,7 +118,7 @@ const Hero = () => {
             </motion.p>
 
             {/* CTA Badge */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={
                 isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
@@ -135,7 +135,7 @@ const Hero = () => {
                   Seeking Full-Time Opportunities
                 </span>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Scroll Indicator */}
             <motion.div
