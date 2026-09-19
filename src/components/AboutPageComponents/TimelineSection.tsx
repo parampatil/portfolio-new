@@ -11,6 +11,7 @@ import MaharashtraBoardLogo from "@/assets/images/Education Icons/MaharashtraBoa
 import SSRVMLogo from "@/assets/images/Education Icons/SSRVM Logo.png";
 import CoinageLogo from "@/assets/images/Career Icons/Coinage Logo.png";
 import World360Logo from "@/assets/images/Career Icons/360 Logo.ico";
+import SandstoneLogo from "@/assets/images/Career Icons/Sandstone Logo.png";
 
 interface TimelineEntry {
   title: string;
@@ -20,13 +21,36 @@ interface TimelineEntry {
 
 const data: TimelineEntry[] = [
   {
+    title: "2026 June",
+    category: "career",
+    content: (
+      <CareerItem
+        title="Full Stack Software Engineer"
+        company="Sandstone, New York, NY"
+        duration="June 15, 2026 - Present"
+        description="Building product experiences for legal teams, focused on document augmentation, metadata extraction, workflow automation, and integrations across legal workflows."
+        technologies={[
+          "Next.js",
+          "Office.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Docker",
+          "GCP",
+          "Flask APIs",
+        ]}
+        logoUrl={SandstoneLogo}
+      />
+    ),
+  },
+  {
     title: "2025 February",
     category: "career",
     content: (
       <CareerItem
         title="Software Developer"
         company="360 World Inc, Fremont, CA"
-        duration="Feb 2025 - Present"
+        duration="Feb 2025 - May 2026"
         description="
           Built secure admin dashboards and business websites for 360 World Inc using Next.js, Go, and GCP, implementing VPN, Google OAuth, and role-based access, and rapidly delivering modern, configurable solutions with Docker, Kubernetes, and Tailwind CSS for both internal and external users."
         technologies={[

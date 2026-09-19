@@ -1,13 +1,32 @@
 import { motion } from "motion/react";
-import {MagicCard} from "@/components/ui/magic-card";
+import { MagicCard } from "@/components/ui/magic-card";
 import IULogo from "@/assets/images/Education Icons/IU Logo.png";
 import World360Logo from "@/assets/images/Career Icons/360 Logo.ico";
+import SandstoneLogo from "@/assets/images/Career Icons/Sandstone Logo.png";
 
 const experience = [
   {
+    title: "Full Stack Software Engineer",
+    company: "Sandstone, New York, NY",
+    duration: "Jun 2026 - Present",
+    logo: SandstoneLogo,
+    description:
+      "Building AI-powered document augmentation, metadata extraction, and workflow experiences for legal teams.",
+    technologies: [
+      "Next.js",
+      "Office.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Docker",
+      "GCP",
+      "Flask APIs",
+    ],
+  },
+  {
     title: "Software Developer",
     company: "360 World Inc, Fremont, CA",
-    duration: "Feb 2025 - Present",
+    duration: "Feb 2025 - May 2026",
     logo: World360Logo,
     description:
       "Built secure dashboards and sites with Next.js, Go, and GCP, adding VPN, OAuth, and rapid, modern UI with Docker and Tailwind CSS.",
@@ -25,7 +44,7 @@ const experience = [
   {
     title: "Software Developer",
     company: "Indiana University",
-    duration: "Jan 2024 - Present",
+    duration: "Jan 2024 - Jan 2025",
     logo: IULogo,
     description:
       "Led a team to build a machine learning model testing website and developed image transformation software processing 80,000+ images.",
@@ -53,7 +72,7 @@ const ExperienceSection = () => (
         transition: { staggerChildren: 0.15, delayChildren: 0.2 },
       },
     }}
-    className="col-span-6 md:col-span-3 lg:col-span-2 h-full"
+    className="col-span-6 h-full md:col-span-3 lg:col-span-2"
   >
     <MagicCard className="p-6 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
       <h3 className="mb-4 text-xl font-semibold text-pink-400">Experience</h3>
@@ -70,14 +89,14 @@ const ExperienceSection = () => (
             <img
               src={exp.logo}
               alt={exp.company}
-              className="h-12 w-12 rounded-lg object-contain aspect-square"
+              className="aspect-square h-12 w-12 rounded-lg object-contain"
             />
             <div>
               <div className="flex items-center justify-between gap-2">
-                <span className="font-bold text-base text-neutral-900 dark:text-white">
+                <span className="text-base font-bold text-neutral-900 dark:text-white">
                   {exp.title}
                 </span>
-                <span className="ml-2 text-xs text-neutral-500 dark:text-neutral-400 text-right">
+                <span className="ml-2 text-right text-xs text-neutral-500 dark:text-neutral-400">
                   {exp.duration}
                 </span>
               </div>
@@ -91,7 +110,7 @@ const ExperienceSection = () => (
                 {exp.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-pink-100 text-pink-700 px-2 py-1 text-xs dark:bg-pink-900/30 dark:text-pink-300"
+                    className="rounded-full bg-pink-100 px-2 py-1 text-xs text-pink-700 dark:bg-pink-900/30 dark:text-pink-300"
                   >
                     {tech}
                   </span>
